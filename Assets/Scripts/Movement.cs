@@ -49,4 +49,18 @@ public class Movement : MonoBehaviour
 
 
     }
+
+    //For player staying on moving platform
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("MovingPlatform")) {
+            transform.parent = other.transform;
+        }
+    }
+
+    //For player leaving moving platform
+    void OnTriggerExit(Collider other) {
+        if (other.CompareTag("MovingPlatform")) {
+            transform.parent = null;
+        }
+    }
 }
