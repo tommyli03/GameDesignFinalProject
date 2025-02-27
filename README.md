@@ -95,4 +95,4 @@ Basic shooting:
 Shooting is done through a Shoot Point in the Weapon, attached to the player via their "right arm". We have plans to potentially change this if we want to do grappling with our right arm and shooting with our left. Bullets come out upon left-clicking and collide with terrain. The bullets currently don't do anything else and we haven't made them done damage yet.
 
 Basic grappling:
-Basic grappling is done 
+Basic grappling is done by launching a raycast, and when it hits something, it teleports immediately. We will replace this with jump and basic momentum. The grappling shows you a red line in order to show the path of grappling. We also freeze the player momentarily while grappling.
