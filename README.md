@@ -67,7 +67,7 @@ Core Gameplay Mechanics:
 - Shooting and ensuring that the projectiles deal damage to targets or terrain
 - Some form of wall climbing and ledge grabbing
 
-**Project Checkpoint Part 2: 3D Scenes and Models (Ch 3+4, 10)**
+**Project Part 2: 3D Scenes and Models (Ch 3+4, 10)**
 
 3D Scenes:
 - Add more terrain textures and even destructible terrain
@@ -78,3 +78,21 @@ Model:
 - Create enemy model assets
 - Add an AI script to enemies
 - Apply meshes to all the assets
+
+# Development
+
+**Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)**
+
+Our work for this deliverable consists of these 3 mains components:
+- Basic movement on terrain with a First-person viewpoint
+- Basic shooting
+- Basic grappling
+
+Basic movement on terrain with a First-person viewpoint:
+The game is implemented as a Unity scene with a simple terrain consisting of the ground and a wall. The player has a first-person viewpoint where they see the bottom half of the cylinder as well as a gun on the right arm. The player can move around with the WASD keys and jump with the Space bar. We've also implemented a double-jump as a beginning part of our dash mechanic.
+
+Basic shooting:
+Shooting is done through a Shoot Point in the Weapon, attached to the player via their "right arm". We have plans to potentially change this if we want to do grappling with our right arm and shooting with our left. Bullets come out upon left-clicking and collide with terrain. The bullets currently don't do anything else and we haven't made them done damage yet.
+
+Basic grappling:
+Basic grappling is done 
