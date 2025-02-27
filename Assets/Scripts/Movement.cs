@@ -9,9 +9,16 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     private float rotationX = 0f;
 
+    private Grappling grapple;
+
+
+    public bool freeze;
+    public bool activeGrapple;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        grapple = GetComponent<Grappling>();
         Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = false; 
     }
@@ -46,6 +53,24 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(transform.forward * 100f, ForceMode.Impulse);
         }
+
+        if (freeze)
+            rb.velocity = Vector3.zero;
+
+        if (grapple.gcdTimer < 0)
+            activeGrapple = false;
+        if (activeGrapple)
+            rb.velocity = Vector3.zero;
+
+
+    }
+
+
+    public void JumpToPos(Vector3 target)
+    {
+        activeGrapple = true;
+        
+        rb.position = target;
 
 
     }
