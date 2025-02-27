@@ -39,6 +39,14 @@ https://www.youtube.com/watch?v=QofAfUFVA_Y
 
 Doom Eternal is a first-person platforming shooter with a focus on blasting enemies. It's less precise but more satisfying as chunks of the enemy literally shred off after shooting them. It has excellent graphics and a straightforward gameplay loop, just like what we intend for our game. The environment is also very dynamic and the enemies and weapon choices creative.
 
+**Mirror's Edge Catalyst**
+
+![image](https://github.com/user-attachments/assets/91b799fa-848d-42c0-a045-46917caf57f0)
+
+https://www.youtube.com/watch?v=RHE60g2e4FI
+
+Mirror's Edge Catalyst is a first-person action-platformer that allows for fluid parkour and traversal. It focuses mostly on momentum, precise timing, and includes many of the movement options we hope to implement, such as wall-running, running, and grappling. Furthermore, the futuristic city background is very appealing and is a backdrop that we're currently considering for our game.
+
 
 # Gameplay
 - Players can move with WASD keys, jump with the space key, and also dash by pressing a movement key twice in quick succession. Dashes can be done in any direction (such as double jumping when clicking space twice) but have a cooldown.
@@ -46,6 +54,8 @@ Doom Eternal is a first-person platforming shooter with a focus on blasting enem
 - Other than grappling, movement involves running, jumping, and wall-running
 - There will be two kinds of terrain: interactable (buttons to shoot that move certain parts, able to be walked on, or able to be grappled to) and non-interactable (background)
 - Enemies will fire projectiles that the player needs to dodge in order to stay alive, but can also be shot themselves in order to die. There will be a variety of enemies, including flying ones, larger ones, etc.
+- There will be a simple narrative, about 3-4 levels, and a final boss at the end of the last level. We hope to allow players to unlock guns as they play, and when they die, they restart at the beginning of the level, allowing for levels to be checkpoints.
+- We're also planning on making the final boss very large and giving the player options to traverse the surface of the boss while attacking weakpoints, similar to the fight with the Titans from God of War 3.
 
 # Development Plan
 
@@ -61,7 +71,10 @@ Core Gameplay Mechanics:
 
 3D Scenes:
 - Add more terrain textures and even destructible terrain
-- 
-- 
-- 
+- Add a death screen to start over (eventually this will bring the player back to the beginning of the level)
+- Create and implement some terrain textures if possible
 
+Model:
+- Create enemy model assets
+- Add an AI script to enemies
+- Apply meshes to all the assets
