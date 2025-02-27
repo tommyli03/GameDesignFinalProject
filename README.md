@@ -1,4 +1,4 @@
-# Game Design Final Project
+# SKYHOOK
 
 
 # Team Members
@@ -31,6 +31,15 @@ https://www.youtube.com/watch?v=Aug1M1_DhNc
 
 A Story About My Uncle is a narrative-driven first-person platforming game with a focus on first-person swinging mechanics. It emphasizes player precision/timing with the electromagnetic grapple hook, making it a valuable reference for refining our own grapple-based movement. The futuristic/outdoor/Jurassic design of levels also align with what we envision for our own environment. 
 
+**Doom Eternal**
+
+![image](https://github.com/user-attachments/assets/64563437-242b-4a6c-b25e-4019fa0acc6f)
+
+https://www.youtube.com/watch?v=QofAfUFVA_Y
+
+Doom Eternal is a first-person platforming shooter with a focus on blasting enemies. It's less precise but more satisfying as chunks of the enemy literally shred off after shooting them. It has excellent graphics and a straightforward gameplay loop, just like what we intend for our game. The environment is also very dynamic and the enemies and weapon choices creative.
+
+
 # Gameplay
 - Players can move with WASD keys, jump with the space key, and also dash by pressing a movement key twice in quick succession. Dashes can be done in any direction (such as double jumping when clicking space twice) but have a cooldown.
 - Players can swing between obstacles (islands, walls, etc.) with the grapple hook arm using right click on the mouse. Players can grapple to specified locations on the terrain denoted by some symbol.
@@ -47,3 +56,12 @@ Core Gameplay Mechanics:
 - Player movement and dashing (ensuring that the player moves correctly and smoothly)
 - Shooting and ensuring that the projectiles deal damage to targets or terrain
 - Some form of wall climbing and ledge grabbing
+
+**Project Checkpoint Part 2: 3D Scenes and Models (Ch 3+4, 10)**
+
+3D Scenes:
+- Add more terrain textures and even destructible terrain
+- 
+- 
+- 
+
