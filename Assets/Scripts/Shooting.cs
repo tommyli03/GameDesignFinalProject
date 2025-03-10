@@ -6,26 +6,31 @@ public class Shooting : MonoBehaviour
 {
     public GameObject Bullet;
     public Transform ShootPoint;
-    public float bulletSpeed = 20f;
+    public float bulletSpeed;
+    public float fireRate;
+    public float lastShootTime;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButton(0))
         {
-            Shoot();
+            if (Time.time >= lastShootTime + (1f / fireRate)) {
+                Shoot();
+                lastShootTime = Time.time;
+            }
         }
     }
 
     void Shoot()
     {
         GameObject bullet = Instantiate(Bullet, ShootPoint.position, ShootPoint.rotation);
-
+        
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.velocity = ShootPoint.forward * bulletSpeed;
         }
-
+        
         Destroy(bullet, 2f);
     }
 }

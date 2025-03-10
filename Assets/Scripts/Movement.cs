@@ -57,10 +57,10 @@ public class Movement : MonoBehaviour
         if (freeze)
             rb.velocity = Vector3.zero;
 
-        if (grapple.gcdTimer < 0)
+        /*if (grapple.gcdTimer < 0)
             activeGrapple = false;
         if (activeGrapple)
-            rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;*/
 
 
     }
