@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScatterShooting : MonoBehaviour
+{
+    public GameObject Bullet;
+    public Transform ShootPoint;
+    public float bulletSpeed;
+    public float fireRate;
+    public float lastShootTime;
+    public float spreadAngle;
+    public int pelletCount;
+    
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (Time.time >= lastShootTime + (1f / fireRate)) {
+                Shoot();
+                lastShootTime = Time.time;
+            }
+        }
+    }
+
+    void Shoot()
+    {
+        for (int i = 0; i < pelletCount; i++)
+        {
+            GameObject bullet = Instantiate(Bullet, ShootPoint.position, ShootPoint.rotation);
+            
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                float angleStep = spreadAngle / (pelletCount - 1);
+                float currentAngle = -spreadAngle / 2 + (angleStep * i);
+                Vector3 spreadDirection = Quaternion.Euler(0, currentAngle, 0) * ShootPoint.forward;
+                rb.velocity = spreadDirection * bulletSpeed;
+            }
+
+            Destroy(bullet, 0.25f); // RANGE
+        }
+    }
+}
