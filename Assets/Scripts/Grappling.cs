@@ -14,6 +14,7 @@ public class Grappling : MonoBehaviour
 
     public float maxGrappleDist;
     public float grappleDelayTime;
+    public float yOvershoot = 1f;
 
 
     private Vector3 grapplePoint; //change to private later
@@ -22,6 +23,7 @@ public class Grappling : MonoBehaviour
 
     public KeyCode grappleKey = KeyCode.Mouse1;
     public bool grappling;
+    public bool activeGrapple;
 
 
     private float dt; 
@@ -65,7 +67,7 @@ public class Grappling : MonoBehaviour
         pm.freeze = true;
         grappling = true;
         RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDist, Grabbable)) //no idea what this does, try and figure out.
+        if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDist, Grabbable)) 
         {
             grapplePoint = hit.point;
 
@@ -83,10 +85,26 @@ public class Grappling : MonoBehaviour
         lr.SetPosition(1, grapplePoint);
     }
 
+    
+
     private void Execute()
     {
         pm.freeze = false;
-        pm.JumpToPos(grapplePoint);
+
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+
+        float grapplePosRelY = grapplePoint.y - lowestPoint.y;
+        float topArcPoint = grapplePosRelY + yOvershoot;
+
+        if (grapplePosRelY < 0)
+        {
+            topArcPoint = yOvershoot;
+        }
+
+
+        pm.JumpToPosition(grapplePoint, topArcPoint);
+
+        Invoke(nameof(StopGrapple), 1.3f);
     }
 
     private void StopGrapple()
@@ -98,5 +116,6 @@ public class Grappling : MonoBehaviour
         lr.enabled = false;
 
         pm.freeze = false;
+        pm.activeGrapple = false;
     }
 }
