@@ -8,7 +8,8 @@ public class Shooting : MonoBehaviour
     public Transform ShootPoint;
     public float bulletSpeed;
     public float fireRate;
-    public float lastShootTime;
+    private float lastShootTime;
+    public float weaponDamage;
 
     void Update()
     {
@@ -29,6 +30,12 @@ public class Shooting : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = ShootPoint.forward * bulletSpeed;
+        }
+
+        ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDamage(weaponDamage);
         }
         
         Destroy(bullet, 2f);

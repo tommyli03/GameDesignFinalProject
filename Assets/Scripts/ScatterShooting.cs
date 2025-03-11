@@ -8,7 +8,8 @@ public class ScatterShooting : MonoBehaviour
     public Transform ShootPoint;
     public float bulletSpeed;
     public float fireRate;
-    public float lastShootTime;
+    public float weaponDamage;
+    private float lastShootTime;
     public float spreadAngle;
     public int pelletCount;
     
@@ -36,6 +37,12 @@ public class ScatterShooting : MonoBehaviour
                 float currentAngle = -spreadAngle / 2 + (angleStep * i);
                 Vector3 spreadDirection = Quaternion.Euler(0, currentAngle, 0) * ShootPoint.forward;
                 rb.velocity = spreadDirection * bulletSpeed;
+            }
+
+            ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDamage(weaponDamage);
             }
 
             Destroy(bullet, 0.25f); // RANGE
