@@ -62,22 +62,26 @@ Mirror's Edge Catalyst is a first-person action-platformer that allows for fluid
 **Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)**
 
 Core Gameplay Mechanics:
-- Implement Grappling functionality, ensuring that momentum is achieved, only certain terrain can be grappled to, and that perspective isn’t majorly affected by the grappling
-- Player movement and dashing (ensuring that the player moves correctly and smoothly)
-- Shooting and ensuring that the projectiles deal damage to targets or terrain
-- Some form of wall climbing and ledge grabbing
+- ~~Implement Grappling functionality, ensuring that momentum is achieved, only certain terrain can be grappled to, and that perspective isn’t majorly affected by the grappling~~
+- ~~Player movement and dashing (ensuring that the player moves correctly and smoothly)~~
+- ~~Shooting and ensuring that the projectiles deal damage to targets~~ or terrain (didn't have time to implement terrain damage yet)
+- Some form of wall climbing and ledge grabbing (after talking with the team, we decided against implementing this gameplay feature as it didn't make sense thematically)
 
 **Project Part 2: 3D Scenes and Models (Ch 3+4, 10)**
 
 3D Scenes:
-- Add more terrain textures and even destructible terrain
-- Add a death screen to start over (eventually this will bring the player back to the beginning of the level)
-- Create and implement some terrain textures if possible
+- Add destructible terrain (again, we didn't have time to implement terrain damage yet and will do this next iteration)
+- ~~Add a death screen to start over (eventually this will bring the player back to the beginning of the level)~~
+- ~~Create and implement some terrain textures if possible~~
 
 Model:
-- Create enemy model assets
-- Add an AI script to enemies
-- Apply meshes to all the assets
+- Create enemy model assets (we still need to decide on what kinds of enemies we want, but the prefab and functionality are done)
+- ~~Add an AI script to enemies~~
+- ~~Apply meshes to all the assets~~
+
+**Project Part 2 Additions**
+- Added multiple guns, including a shotgun and a sniper
+- Added some concepts for some enemy subtypes, like the tank and long-range type
 
 **Project Part 3: Visual Effects (Ch 11-13)**
 
@@ -120,3 +124,33 @@ Shooting is done through a Shoot Point in the Weapon, attached to the player via
 
 Basic grappling:
 Basic grappling is done by launching a raycast, and when it hits something, it teleports immediately. We will replace this with jump and basic momentum. The grappling shows you a red line in order to show the path of grappling. We also freeze the player momentarily while grappling.
+
+**Project Part 2: 3D Scenes and Models (Ch 3+4, 10)**
+
+Our work for this deliverable consists of these 3 mains components:
+- Terrain & Meshing
+- Enemies & Shooting
+- Player Movement & Grappling
+
+Terrain & Meshing:
+Firstly, more terrain including the moving platform were added. Furthermore, floating islands were added, the player meshing was completed, and all the gun meshing was done. Here are the assets that we used for this iteration:
+
+Terrain:
+https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182
+
+Spartan:
+
+![Screenshot 2025-03-10 at 10 41 02 PM](https://github.com/user-attachments/assets/1b90db44-6d86-42be-ab9d-12a9d66654fa)
+
+Default Gun:
+https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-light-87916
+![Screenshot 2025-03-10 at 10 44 44 PM](https://github.com/user-attachments/assets/e1895de7-f666-42b9-9e6d-6e5705b918e0)
+
+Shotgun:
+https://assetstore.unity.com/packages/3d/props/guns/shotgun-26685
+![Screenshot 2025-03-10 at 10 45 02 PM](https://github.com/user-attachments/assets/0468d49b-c329-4c9e-8fcf-1f5f9b9ceffe)
+
+Sniper:
+https://assetstore.unity.com/packages/3d/props/weapons/mac-sci-fi-sniper-rifle-188585
+![Screenshot 2025-03-10 at 10 45 17 PM](https://github.com/user-attachments/assets/0dee7dca-7b7e-4f90-830b-4ca318106f93)
+
