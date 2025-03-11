@@ -109,6 +109,7 @@ public class Grappling : MonoBehaviour
 
     private void StopGrapple()
     {
+        Debug.Log("Stopping grapple");
         grappling = false;
 
         gcdTimer = grapplingCool;

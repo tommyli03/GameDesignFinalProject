@@ -1,17 +1,24 @@
 using UnityEngine;
 
-public class ContactDamager : MonoBehaviour
+public class ContactDamage : MonoBehaviour
 {
-    public float damage;
-    
+    private float damage;
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        
+
+        Debug.Log("Current damage: " + damage);
+
         Life life = other.GetComponent<Life>();
         if (life != null)
         {
-            life.amount -= damage;
+            life.amount -= damage; // Use the assigned damage value
         }
     }
 }
