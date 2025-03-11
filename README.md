@@ -79,6 +79,30 @@ Model:
 - Add an AI script to enemies
 - Apply meshes to all the assets
 
+**Project Part 3: Visual Effects (Ch 11-13)**
+
+Visual Effects:
+- Add more background to the environment, preferably some brush or trees to simulate a forest/jungle environment
+- Employ more realism by using shaders and developing lighting and shadows
+- Add some kind of explosion visual and knockback for the shotgun
+- Handle the muzzle effects (smoke or sparks) for each weapon and for enemies
+- Add some visual signifier of hitting the enemy with the gun
+
+Player Mechanics:
+- Make dashing more smooth and employ some kind of animaiton for it
+- Adjust movement speed until it feels smooth and playable
+
+Guns:
+- Add new weapons (~4) and then cull after discussion down to around 5 at most
+- Change bullet shape/look for greater realism
+-  Add some knockback on the player to the shotgun for more impact
+
+Enemies:
+- Find appropriate models/meshes for the enemies
+- Enhance enemy AI so that they don't just stand in one place while idle, and so they lose sight of player after we duck behind a wall
+- Add some knockback on the enemies to the shotgun for more impact
+
+
 # Development
 
 **Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)**
