@@ -128,21 +128,34 @@ Basic grappling is done by launching a raycast, and when it hits something, it t
 **Project Part 2: 3D Scenes and Models (Ch 3+4, 10)**
 
 Our work for this deliverable consists of these 3 mains components:
-- Terrain & Meshing
 - Enemies & Shooting
 - Player Movement & Grappling
+- Terrain & Meshing
+
+Enemies & Shooting:
+We implemented the enemy AI and shooting. The enemies stand idle until the player enters their sight of range. After that, they should chase the player and shoot at them. They should be following the player with their gaze. We also added multiple enemy types- one tank, which is larger and has more health and one sniper, which has a thinner + longer gun and has a greater vision range. Furthermore, 2 more guns were added- the sniper and the shotgun. Assets for these two are shown below, and while the sniper has a faster bullet, it has a lower fire rate. On the other hand, the shotgun fires out multiple pellets in a cone.
+
+Player Movement & Grappling:
+The movement was tweaked so that there are no more infinite jumps. Instead, we have an adjustable number of maximum jumps (we'll set this to 2 or 3, not decided yet), where you then can't jump again until you hit the ground. The dash now is more fluid and is an actual dash instead of just a teleporting blink. It also travels a further distance. We also made the grappling more fluid, instead of simply just a teleport.
 
 Terrain & Meshing:
 Firstly, more terrain including the moving platform were added. Furthermore, floating islands were added, the player meshing was completed, and all the gun meshing was done. Here are the assets that we used for this iteration:
 
 Terrain:
 https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182
+![Screenshot 2025-03-10 at 11 11 46 PM](https://github.com/user-attachments/assets/92e14188-a87c-4de2-bcec-4beeabe711ca)
+
+Trees:
+https://assetstore.unity.com/packages/3d/vegetation/big-poplar-tree-free-301037
+https://assetstore.unity.com/packages/3d/vegetation/big-oak-tree-free-279431
+
+![Screenshot 2025-03-10 at 11 09 13 PM](https://github.com/user-attachments/assets/07c39b00-3d13-4ce5-8f32-d569f9cce8ae)
 
 Spartan:
-
+https://sketchfab.com/3d-models/spartan-armour-mkv-halo-reach-57070b2fd9ff472c8988e76d8c5cbe66
 ![Screenshot 2025-03-10 at 10 41 02 PM](https://github.com/user-attachments/assets/1b90db44-6d86-42be-ab9d-12a9d66654fa)
 
-Default Gun:
+Assault Rifle:
 https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-light-87916
 ![Screenshot 2025-03-10 at 10 44 44 PM](https://github.com/user-attachments/assets/e1895de7-f666-42b9-9e6d-6e5705b918e0)
 
@@ -154,3 +167,14 @@ Sniper:
 https://assetstore.unity.com/packages/3d/props/weapons/mac-sci-fi-sniper-rifle-188585
 ![Screenshot 2025-03-10 at 10 45 17 PM](https://github.com/user-attachments/assets/0dee7dca-7b7e-4f90-830b-4ca318106f93)
 
+
+# Instructions for Testing the Project
+
+- General 2D Movement: WASD
+- Jump: Space Bar (can be spammed up to 5 times)
+- Dash: Shift (cooldown between dashes, but can also be spammed)
+- Grappling: Right-click
+- Swap between Guns: Mouse Scroll (up or down)
+- Assault Rifle (Default Gun): Left-click (can be held down)
+- Shotgun: Left-click (cannot be held down, must manually re-click to fire again)
+- Sniper: Left-click (can be held down)
