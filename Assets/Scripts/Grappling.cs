@@ -10,7 +10,10 @@ public class Grappling : MonoBehaviour
     public Transform cam;
     public Transform gunTip;
     public LayerMask Grabbable;
-    public LineRenderer lr;
+    // public LineRenderer lr;
+
+    public GameObject laserBeamPrefab;  // Assign your laser asset in the Inspector
+    private GameObject activeLaserBeam; // Stores the instantiated laser
 
     public float maxGrappleDist;
     public float grappleDelayTime;
@@ -51,9 +54,28 @@ public class Grappling : MonoBehaviour
 
     void LateUpdate()
     {
-        if(grappling)
-            lr.SetPosition(0, gunTip.position);
+        // if(grappling)
+        //     lr.SetPosition(0, gunTip.position);
+
+        if (grappling && activeLaserBeam != null)
+        {
+            UpdateLaser();
+        }
     }
+
+    private void UpdateLaser()
+    {
+        if (activeLaserBeam != null)
+        {
+            activeLaserBeam.transform.position = gunTip.position; // Start at the gun tip
+            activeLaserBeam.transform.LookAt(grapplePoint); // Point toward grapple target
+
+            // Adjust scale if needed (for stretched beam effects)
+            float distance = Vector3.Distance(gunTip.position, grapplePoint);
+            activeLaserBeam.transform.localScale = new Vector3(1, 1, distance);
+        }
+    }
+
 
 
 
@@ -81,8 +103,14 @@ public class Grappling : MonoBehaviour
         }
 
 
-        lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
+        // lr.enabled = true;
+        // lr.SetPosition(1, grapplePoint);
+        if (laserBeamPrefab != null)
+        {
+            activeLaserBeam = Instantiate(laserBeamPrefab, gunTip.position, Quaternion.identity);
+        }
+
+        UpdateLaser();
     }
 
     
@@ -114,9 +142,14 @@ public class Grappling : MonoBehaviour
 
         gcdTimer = grapplingCool;
 
-        lr.enabled = false;
+        //lr.enabled = false;
 
         pm.freeze = false;
         pm.activeGrapple = false;
+
+        if (activeLaserBeam != null)
+        {
+            Destroy(activeLaserBeam);
+        }
     }
 }
