@@ -33,9 +33,13 @@ public class ScatterShooting : MonoBehaviour
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                float angleStep = spreadAngle / (pelletCount - 1);
-                float currentAngle = -spreadAngle / 2 + (angleStep * i);
-                Vector3 spreadDirection = Quaternion.Euler(0, currentAngle, 0) * ShootPoint.forward;
+
+                float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+                float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+                //float angleStep = spreadAngle / (pelletCount - 1);
+                //float currentAngle = -spreadAngle / 2 + (angleStep * i);
+                
+                Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
                 rb.velocity = spreadDirection * bulletSpeed;
             }
 
@@ -45,7 +49,7 @@ public class ScatterShooting : MonoBehaviour
                 bulletScript.SetDamage(weaponDamage);
             }
 
-            Destroy(bullet, 0.25f); // RANGE
+            Destroy(bullet, 0.5f); // RANGE
         }
     }
 }

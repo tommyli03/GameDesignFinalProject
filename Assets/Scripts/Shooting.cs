@@ -10,7 +10,13 @@ public class Shooting : MonoBehaviour
     public float fireRate;
     private float lastShootTime;
     public float weaponDamage;
+    public float spreadAngle;
 
+    public float recoil;
+
+    private float rAngle = 0f; //total recovery, 6-10f, 5 degrees
+
+    
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -19,6 +25,13 @@ public class Shooting : MonoBehaviour
                 Shoot();
                 lastShootTime = Time.time;
             }
+        }
+        if (rAngle < 0)
+        {
+            if (rAngle > -2f)
+                rAngle += .5f;
+            else
+                rAngle *= .8f;
         }
     }
 
@@ -29,8 +42,15 @@ public class Shooting : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = ShootPoint.forward * bulletSpeed;
+            float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+            float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+                
+                
+            Vector3 spreadDirection = Quaternion.Euler(currentYAngle + rAngle, currentAngle, 0) * ShootPoint.forward;
+            rb.velocity = spreadDirection * bulletSpeed;
+            
         }
+        rAngle += recoil;
 
         ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
         if (bulletScript != null)

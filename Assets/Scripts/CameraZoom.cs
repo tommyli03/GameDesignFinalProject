@@ -23,7 +23,7 @@ public class CameraZoom : MonoBehaviour
     {
         move = GetComponent<Movement>();
         //cam = GetComponent<Camera>();
-        zoomDuration = move.dashDuration;
+        zoomDuration = move.dashDuration * .8f;
         originalFOV = cam.fieldOfView;
         zoomFOV = originalFOV + fovChange;
         endTime = Time.time - 1f;
@@ -38,8 +38,9 @@ public class CameraZoom : MonoBehaviour
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, originalFOV, Time.deltaTime * 10f);
     }
 
-    public void Zoom()
+    public void Zoom(float duration, float intensity)
     {
-        endTime = Time.time + zoomDuration * .75f;
+        endTime = Time.time + duration * .75f;
+        fovChange = intensity;
     }
 }

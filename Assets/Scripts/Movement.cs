@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
             rb.velocity = Vector3.zero;
             if (cameraZoom != null)
             {
-                cameraZoom.Zoom();
+                cameraZoom.Zoom(cameraZoom.zoomDuration, 12f);
             }
             StartCoroutine(Dash());
             //rb.AddForce(dashDirection * 1000f, ForceMode.VelocityChange);
@@ -140,6 +140,10 @@ public class Movement : MonoBehaviour
         activeGrapple = true;
         targetV = GetJumpVelo(transform.position, targetPos, trajectoryHeight);
         Invoke(nameof(SetVelo), 0.1f);
+        if (cameraZoom != null)
+        {
+            cameraZoom.Zoom(1.3f, 30f);
+        }
         jumps += 1;
         
     }
