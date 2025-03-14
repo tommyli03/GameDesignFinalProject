@@ -134,11 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 8091538589987752533}
-  gunTip: {fileID: 4269821229202134656}
+  gunTip: {fileID: 8336786062552862185}
   Grabbable:
     serializedVersion: 2
     m_Bits: 4294967295
-  lr: {fileID: 7027002132572294191}
+  laserBeamPrefab: {fileID: 100008, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
   maxGrappleDist: 50
   grappleDelayTime: 0.25
   yOvershoot: 0.5
@@ -323,11 +323,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e567da03b514765b766357b1410aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 5933129317354615562, guid: a73b838125fed47d4aca696f2180aa98, type: 3}
+  Bullet: {fileID: 2012788751336567806, guid: be28cc9da4b4f434f9d293794d0c398e, type: 3}
   ShootPoint: {fileID: 7297285232794278006}
-  bulletSpeed: 50
+  bulletSpeed: 100
   fireRate: 1
   weaponDamage: 50
+  spreadAngle: 0
+  recoil: 0
 --- !u!1 &633658283677967414
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,12 +386,43 @@ Transform:
   m_GameObject: {fileID: 2855029882847391076}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.0180185, z: 0}
+  m_LocalPosition: {x: 0, y: 0.868, z: -1.3}
   m_LocalScale: {x: 4, y: 4, z: 1.333333}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3634510246292319891}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &3243282551114077586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8336786062552862185}
+  m_Layer: 0
+  m_Name: GrapplePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8336786062552862185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243282551114077586}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.643, y: -0.333, z: 1.0915135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8091538589987752533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5155052478448137165
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +488,7 @@ Transform:
   - {fileID: 8139763426218733210}
   - {fileID: 7623609863568239333}
   - {fileID: 3634510246292319891}
+  - {fileID: 8336786062552862185}
   m_Father: {fileID: 3846728691279499924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &563911186391121460
@@ -666,6 +700,8 @@ MonoBehaviour:
   bulletSpeed: 20
   fireRate: 10
   weaponDamage: 2.5
+  spreadAngle: 0
+  recoil: 0
 --- !u!1 &8767186695034273664
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +980,18 @@ PrefabInstance:
     - target: {fileID: 1206790267675218954, guid: ed884912bb2d8f34bb20bbf879b4e87d, type: 3}
       propertyPath: m_Name
       value: MAC_SciFiSniperRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596300932929054945, guid: ed884912bb2d8f34bb20bbf879b4e87d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00477
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596300932929054945, guid: ed884912bb2d8f34bb20bbf879b4e87d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596300932929054945, guid: ed884912bb2d8f34bb20bbf879b4e87d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 2014430605032181424, guid: ed884912bb2d8f34bb20bbf879b4e87d, type: 3}
       propertyPath: m_LocalScale.x
