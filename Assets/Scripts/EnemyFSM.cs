@@ -176,7 +176,7 @@ public class EnemyFSM : MonoBehaviour
             player = sightSensor.detectedObject.transform;
         }
 
-        Debug.Log("Current state: " + currentState);
+        // Debug.Log("Current state: " + currentState);
         if (currentState == EnemyState.Idle) Idle();
         else if (currentState == EnemyState.ChasePlayer) ChasePlayer();
         else AttackPlayer();
