@@ -285,6 +285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e567da03b514765b766357b1410aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 0}
+  playerCamera: {fileID: 1680843346}
   Bullet: {fileID: 5933129317354615562, guid: a73b838125fed47d4aca696f2180aa98, type: 3}
   ShootPoint: {fileID: 568845166}
   bulletSpeed: 50
@@ -3834,6 +3836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomDuration: 0.6
   fovChange: 12
+  distort: 10
   cam: {fileID: 1680843346}
 --- !u!114 &1930134756
 MonoBehaviour:
@@ -4254,6 +4257,10 @@ PrefabInstance:
       propertyPath: bulletSpeed
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 2208945202163350340, guid: 13d96e163c25047868cd5e944cb3a68b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1680843346}
     - target: {fileID: 2657170580853579750, guid: 13d96e163c25047868cd5e944cb3a68b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08
@@ -4346,6 +4353,10 @@ PrefabInstance:
       propertyPath: spreadAngle
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6849408720114005743, guid: 13d96e163c25047868cd5e944cb3a68b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1680843346}
     - target: {fileID: 7384111520662316843, guid: 13d96e163c25047868cd5e944cb3a68b, type: 3}
       propertyPath: m_Name
       value: Default

@@ -63,12 +63,7 @@ public class Shooting : MonoBehaviour
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
-
-
         {
-<<<<<<< Updated upstream
-            rb.velocity = finalDirection * bulletSpeed;
-=======
             float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
             float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
                 
@@ -76,7 +71,6 @@ public class Shooting : MonoBehaviour
             Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
             rb.velocity = spreadDirection * bulletSpeed;
             
->>>>>>> Stashed changes
         }
 
         rAngle += recoil;
