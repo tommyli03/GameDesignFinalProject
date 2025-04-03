@@ -216,6 +216,9 @@ Destructible Terrain:
 [https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182](https://assetstore.unity.com/packages/3d/environments/destructible-wall-generator-18143)
 ![Screenshot 2025-04-02 at 11 37 14 PM](https://github.com/user-attachments/assets/4ab6cbdf-5b78-43a9-afaa-67f46c3a7636)
 
+Muzzle Flash:
+![Screenshot 2025-04-02 at 11 53 25 PM (2)](https://github.com/user-attachments/assets/35bbb69e-2896-43ef-94ed-73f77c007be2)
+
 
 # Instructions for Testing the Project
 
