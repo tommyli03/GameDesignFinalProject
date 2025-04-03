@@ -70,12 +70,12 @@ Core Gameplay Mechanics:
 **Project Part 2: 3D Scenes and Models (Ch 3+4, 10)**
 
 3D Scenes:
-- Add destructible terrain (again, we didn't have time to implement terrain damage yet and will do this next iteration)
+- ~~Add destructible terrain (again, we didn't have time to implement terrain damage yet and will do this next iteration)~~
 - ~~Add a death screen to start over (eventually this will bring the player back to the beginning of the level)~~
 - ~~Create and implement some terrain textures if possible~~
 
 Model:
-- Create enemy model assets (we still need to decide on what kinds of enemies we want, but the prefab and functionality are done)
+- ~~Create enemy model assets (we still need to decide on what kinds of enemies we want, but the prefab and functionality are done)~~
 - ~~Add an AI script to enemies~~
 - ~~Apply meshes to all the assets~~
 
@@ -86,25 +86,50 @@ Model:
 **Project Part 3: Visual Effects (Ch 11-13)**
 
 Visual Effects:
-- Add more background to the environment, preferably some brush or trees to simulate a forest/jungle environment
-- Employ more realism by using shaders and developing lighting and shadows
-- Add some kind of explosion visual and knockback for the shotgun
-- Handle the muzzle effects (smoke or sparks) for each weapon and for enemies
+- ~~Add more background to the environment, preferably some brush or trees to simulate a forest/jungle environment~~
+- ~~Employ more realism by using shaders and developing lighting and shadows~~
+- Add some kind of explosion visual ~~and knockback~~ for the shotgun
+- ~~Handle the muzzle effects (smoke or sparks) for each weapon~~ and for enemies (not for enemies yet)
 - Add some visual signifier of hitting the enemy with the gun
 
 Player Mechanics:
 - Make dashing more smooth and employ some kind of animaiton for it
-- Adjust movement speed until it feels smooth and playable
+- ~~Adjust movement speed until it feels smooth and playable~~
 
 Guns:
-- Add new weapons (~4) and then cull after discussion down to around 5 at most
+- Add new weapons (~4) and then cull after discussion down to around 5 at most (we decided to lessen the priority of this)
 - Change bullet shape/look for greater realism
--  Add some knockback on the player to the shotgun for more impact
+- ~~Add some knockback on the player to the shotgun for more impact~~
 
 Enemies:
-- Find appropriate models/meshes for the enemies
+- ~~Find appropriate models/meshes for the enemies~~
 - Enhance enemy AI so that they don't just stand in one place while idle, and so they lose sight of player after we duck behind a wall
 - Add some knockback on the enemies to the shotgun for more impact
+
+**Project Part 2 Additions**
+- Added player health, we can now take damage and die, thus restarting the game
+- Added animation for destructible terrain
+
+**Project Part 4: Sound, UI, and Animation (Ch 14, 15, 17)**
+
+Sound:
+- Add a sound when the gun is fired, ideally a different sound for each gun
+- Add a sound when an enemy is hit
+- Add some background music (soft instrument)
+- Add a "whoosh" when dashing or jumping
+- Add a sound when walking
+
+UI:
+- Health Bar (position to be determined)
+- Bullets Remaining
+- Red glare/vignette when on low health
+- Counter for Number of Enemies Alive
+- Dash Cooldown Bar
+
+Animation:
+- Walking animation
+- Enemy animation
+- Gun Firing animation (like rotation for recoil)
 
 
 # Development
@@ -166,6 +191,30 @@ https://assetstore.unity.com/packages/3d/props/guns/shotgun-26685
 Sniper:
 https://assetstore.unity.com/packages/3d/props/weapons/mac-sci-fi-sniper-rifle-188585
 ![Screenshot 2025-03-10 at 10 45 17 PM](https://github.com/user-attachments/assets/0dee7dca-7b7e-4f90-830b-4ca318106f93)
+
+**Project Part 3: Visual Effects (Ch 11-13)**
+
+Our work for this deliverable consists of these 3 mains components:
+- Visual Effects
+- Player Mechanics
+- Guns
+- Enemies
+
+Visual EFfects:
+We added more background to the environment, especially brush or tress which allowed us to better simulate a forest. We also used shaders and lighting in order to add more realism. 
+
+Player Mechanics:
+WE added health to the player, which means that now, the player can take damage from enemies' bullets and actually die, allowing us to restart the game. We also added an asset for the grappling hook gun.
+
+Guns:
+We added muzzle effects to each weapon, but unfortunately not to each enemy. Furthermore we added the crosshair and changed the shooting script so that the bullets would travel torwards where the crosshair was pointed.
+
+Enemies:
+We created terrain that could be destroyed. This allows for players to shoot the terrain and slowly break it. The durability of the wall (number of bullets required to break it) is adjustable. We also made the bullets more visible so that players can dodge more easily.
+
+Destructible Terrain:
+[https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182](https://assetstore.unity.com/packages/3d/environments/destructible-wall-generator-18143)
+![Screenshot 2025-04-02 at 11 37 14 PM](https://github.com/user-attachments/assets/4ab6cbdf-5b78-43a9-afaa-67f46c3a7636)
 
 
 # Instructions for Testing the Project
