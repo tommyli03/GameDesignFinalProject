@@ -13,12 +13,23 @@ public class ContactDamage : MonoBehaviour
     {
         Destroy(gameObject);
 
-        Debug.Log("Current damage: " + damage);
-
-        Life life = other.GetComponent<Life>();
+        Life life = other.GetComponentInParent<Life>();  
         if (life != null)
         {
-            life.amount -= damage; // Use the assigned damage value
+            Debug.Log($"{other.name} has been hit with {damage} damage");
+            life.take_Damage(damage); // Use the assigned damage value
+        }
+
+        Durability brick = other.GetComponent<Durability>();
+        Debug.Log("brick!");
+        if (brick == null)
+        {
+            Debug.Log("brick is null");
+        }
+        if (brick != null)
+        {
+            Debug.Log($"{other.name} has been hit with {damage} damage (Brick)");
+            brick.TakeDamage(damage, transform.position, 100f, 3f); // use reasonable explosion force/radius
         }
     }
 }

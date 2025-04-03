@@ -5,24 +5,35 @@ public class Life : MonoBehaviour
 {
     public float amount;
     public UnityEvent onDeath;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
+    public bool isPlayer = false;
+    private bool isDead = false;
 
     public void take_Damage(float damage) 
     {
+        if (isDead) return;
         amount -= damage;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (isPlayer) {
+            //Debug.Log("Player Life: " + amount);
+        }
+
         if (amount <= 0)
         {
-            onDeath.Invoke();
+            Die();
+        }
+    }
+    
+    // Called when the life is dead
+    private void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        onDeath?.Invoke();
+
+        if (isPlayer) {
+            GameManager.Instance.PlayerDied();
+        } else {
             Destroy(gameObject);
         }
     }

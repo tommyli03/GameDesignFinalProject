@@ -140,6 +140,8 @@ public class EnemyFSM : MonoBehaviour
     public float bulletSpeed;
     public float fireRate;
     public Transform shootPoint;
+
+    public float damage;
     
     private Transform player; // Store player reference
 
@@ -258,6 +260,12 @@ public class EnemyFSM : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = directionToPlayer * bulletSpeed; // Ensure the bullet moves toward the player
+        }
+
+        ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDamage(damage);
         }
 
         Destroy(bullet, 2f);

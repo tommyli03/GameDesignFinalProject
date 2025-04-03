@@ -7,6 +7,16 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject deathScreen; // Reference to the UI panel
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject); // Ensure only one instance exists
+        }
+    }
 
     public void PlayerDied()
     {
