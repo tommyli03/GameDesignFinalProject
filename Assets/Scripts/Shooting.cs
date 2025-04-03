@@ -82,7 +82,7 @@ public class Shooting : MonoBehaviour
         }
         if (muzzleFlash != null)
         {
-            Debug.Log("Playing muzzle flash");
+            // Debug.Log("Playing muzzle flash");
             
             muzzleFlash.Play(); // replays the burst cleanly
 
