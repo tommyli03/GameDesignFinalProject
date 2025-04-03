@@ -16,7 +16,10 @@ public class Shooting : MonoBehaviour
 
     public float recoil;
 
+    public Camera cam;
+
     private float rAngle = 0f; //total recovery, 6-10f, 5 degrees
+
 
     
     void Update()
@@ -28,12 +31,11 @@ public class Shooting : MonoBehaviour
                 lastShootTime = Time.time;
             }
         }
-        if (rAngle < 0)
+        if (rAngle > 0)
         {
-            if (rAngle > -2f)
-                rAngle += .5f;
-            else
-                rAngle *= .8f;
+            if (rAngle < 2f)
+                rAngle -= .5f;
+            rAngle *= .8f;
         }
     }
     void Shoot()
@@ -61,8 +63,20 @@ public class Shooting : MonoBehaviour
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
+
+
         {
+<<<<<<< Updated upstream
             rb.velocity = finalDirection * bulletSpeed;
+=======
+            float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+            float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+                
+            cam.transform.Rotate(-rAngle,0,0);
+            Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
+            rb.velocity = spreadDirection * bulletSpeed;
+            
+>>>>>>> Stashed changes
         }
 
         rAngle += recoil;

@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
     public float mouseSensitivity = 2f;
     public Transform firstPersonCamera; 
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private float rotationX = 0f;
 
     private Grappling grapple;

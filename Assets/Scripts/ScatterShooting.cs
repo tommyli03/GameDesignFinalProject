@@ -12,6 +12,10 @@ public class ScatterShooting : MonoBehaviour
     private float lastShootTime;
     public float spreadAngle;
     public int pelletCount;
+
+    public Movement move;
+
+    public Camera cam;
     
     void Update()
     {
@@ -42,6 +46,10 @@ public class ScatterShooting : MonoBehaviour
                 Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
                 rb.velocity = spreadDirection * bulletSpeed;
             }
+            
+            Vector3 kb = cam.transform.forward.normalized;
+            move.rb.AddForce(kb * -5f, ForceMode.Impulse);
+            
 
             ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
             if (bulletScript != null)
