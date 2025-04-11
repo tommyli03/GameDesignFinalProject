@@ -18,7 +18,7 @@ public class Shooting : MonoBehaviour
 
     public Camera cam;
 
-    private float rAngle = 0f; //total recovery, 6-10f, 5 degrees
+    public float rAngle = 0f; //total recovery, 6-10f, 5 degrees
 
 
     
@@ -31,7 +31,7 @@ public class Shooting : MonoBehaviour
                 lastShootTime = Time.time;
             }
         }
-        if (rAngle > 0)
+        if (rAngle > 0f)
         {
             if (rAngle < 2f)
                 rAngle -= .5f;
@@ -67,9 +67,15 @@ public class Shooting : MonoBehaviour
             float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
             float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
                 
-            cam.transform.Rotate(-rAngle,0,0);
+            //cam.transform.Rotate(-rAngle,0,0);
+            Quaternion elevation = Quaternion.AngleAxis(-rAngle, ShootPoint.right);
             Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
+            
+            spreadDirection = elevation * spreadDirection;
+
             rb.velocity = spreadDirection * bulletSpeed;
+
+            Debug.DrawRay(ShootPoint.position, spreadDirection * 10f, Color.green, 2f);
             
         }
 

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Movement : MonoBehaviour
 {
@@ -27,6 +29,13 @@ public class Movement : MonoBehaviour
 
     private float dt;
 
+
+    public Volume dashVolume;
+    public float volFade = 5f;
+
+    private float targetVolumeWeight = 0f;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,6 +45,8 @@ public class Movement : MonoBehaviour
         Cursor.visible = false; 
         dashTimer = 0;
         jumps = jumpmax;
+
+        
 
 
         //Physics.gravity = new Vector3(0, -19.62f, 0);
@@ -81,6 +92,9 @@ public class Movement : MonoBehaviour
             Vector3 dashDirection = transform.forward.normalized;
 
             rb.velocity = Vector3.zero;
+
+            
+
             if (cameraZoom != null)
             {
                 cameraZoom.Zoom(cameraZoom.zoomDuration, 12f);
@@ -90,6 +104,11 @@ public class Movement : MonoBehaviour
             
             dashTimer = dashCool;
 
+        }
+
+        if (dashVolume != null)
+        {
+            dashVolume.weight = Mathf.Lerp(dashVolume.weight, targetVolumeWeight, volFade * Time.deltaTime);
         }
 
         RaycastHit hit;
@@ -114,6 +133,7 @@ public class Movement : MonoBehaviour
     System.Collections.IEnumerator Dash()
     {
         float startTime = Time.time;
+        targetVolumeWeight = 1f;
 
         // Get the dash direction based on the character's forward direction
         Vector3 dashDirection = transform.forward;
@@ -130,8 +150,11 @@ public class Movement : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
+        targetVolumeWeight = 0f;
+
         // End the dash
         //rb.velocity = Vector3.zero; // Stop the dash movement
+        
     }
 
     public void JumpToPosition(Vector3 targetPos, float trajectoryHeight)
