@@ -128,7 +128,7 @@ public class EnemyFSM : MonoBehaviour
     //     Gizmos.DrawWireSphere(transform.position, playerAttackDistance);
     // }
 
-     public enum EnemyState { Idle, ChasePlayer, AttackPlayer }
+    public enum EnemyState { Idle, ChasePlayer, AttackPlayer }
     public EnemyState currentState = EnemyState.Idle; // Start in Idle state
 
     public Sight sightSensor;

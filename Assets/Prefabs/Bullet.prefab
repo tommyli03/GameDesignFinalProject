@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d354235d690942daa17241eb8683376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 700718025625883533, guid: e868eb30e73c646aba0f8d1e0a718c4e, type: 3}
 --- !u!96 &-8340368593057965202
 TrailRenderer:
   serializedVersion: 3

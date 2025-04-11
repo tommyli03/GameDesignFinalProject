@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.22042036, y: 3.6157758, z: -4.767}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.43771002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90d558c5c47e74d1e9ab82e0d3f32c8e, type: 2}
+  - {fileID: 2100000, guid: 376675d8e59b2423080004acbcd583dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,3 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d354235d690942daa17241eb8683376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 700718025625883533, guid: e868eb30e73c646aba0f8d1e0a718c4e, type: 3}
+  hitVolume: {fileID: 0}
+  volFade: 5
+  fxlength: 1

@@ -1507,10 +1507,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   sightSensor: {fileID: 343602578150920932}
-  playerAttackDistance: 12
+  playerAttackDistance: 24
   lastShootTime: 0
   bulletPrefab: {fileID: 5933129317354615562, guid: b4debccd51f49494ea6cb27670ebeb08, type: 3}
-  bulletSpeed: 20
+  bulletSpeed: 60
   fireRate: 1
   shootPoint: {fileID: 1152162420317509082}
   damage: 10
@@ -1793,13 +1793,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5290305641794320064}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04575128, y: 1.8873792e-17, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.17067286, w: 0.9853278}
+  m_LocalPosition: {x: -0.5381427, y: -0.07857052, z: 0.04666785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2917880951709915612}
-  m_Father: {fileID: 1517660709477702724}
+  m_Father: {fileID: 7746188604208374819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5498449479616596534
 GameObject:
@@ -2181,6 +2181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6882491147905334515}
   - {fileID: 8365474469808956905}
   m_Father: {fileID: 7755595542608779571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2591,8 +2592,7 @@ Transform:
   m_LocalPosition: {x: -0.055378754, y: 4.6629366e-17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6882491147905334515}
+  m_Children: []
   m_Father: {fileID: 2702877702152226055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7339168638047956020
