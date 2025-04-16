@@ -7,34 +7,57 @@ public class Swap_Weapons : MonoBehaviour
     public GameObject[] weapons;
     public int currentWeaponIndex = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < weapons.Length; i++)
         {
             weapons[i].SetActive(i == 0);
         }
-
         currentWeaponIndex = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-            SwitchWeapon(1);
-        } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-            SwitchWeapon(-1);
+        // Scroll wheel input
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll > 0f)
+        {
+            SwitchWeaponByOffset(1);
+        }
+        else if (scroll < 0f)
+        {
+            SwitchWeaponByOffset(-1);
+        }
+
+        // Number key input (Alpha1 = weapon 0, Alpha2 = weapon 1, etc.)
+        for (int i = 0; i < weapons.Length && i < 9; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                SwitchWeaponTo(i);
+            }
         }
     }
 
-    void SwitchWeapon(int direction) {
-        currentWeaponIndex = (currentWeaponIndex + direction + weapons.Length) % weapons.Length;
+    void SwitchWeaponByOffset(int offset)
+    {
+        currentWeaponIndex = (currentWeaponIndex + offset + weapons.Length) % weapons.Length;
         UpdateWeapon();
     }
 
-    void UpdateWeapon() {
-        for (int i = 0; i < weapons.Length; i++) {
+    void SwitchWeaponTo(int index)
+    {
+        if (index < 0 || index >= weapons.Length || index == currentWeaponIndex)
+            return;
+
+        currentWeaponIndex = index;
+        UpdateWeapon();
+    }
+
+    void UpdateWeapon()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
             weapons[i].SetActive(i == currentWeaponIndex);
         }
     }

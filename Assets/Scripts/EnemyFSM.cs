@@ -144,11 +144,19 @@ public class EnemyFSM : MonoBehaviour
     public float damage;
     
     private Transform player; // Store player reference
+    private Animator animator;
+
 
     private void Awake()
     {
         agent = GetComponentInParent<NavMeshAgent>();
+        animator = GetComponentInParent<Animator>();
 
+         NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
+        {
+            transform.position = hit.position;
+        }
         if (agent == null)
         {
             Debug.LogError("[EnemyFSM] NavMeshAgent is missing on parent!");
@@ -186,6 +194,8 @@ public class EnemyFSM : MonoBehaviour
 
     void Idle()
     {
+        // animator.SetBool("isChasing", false);
+
         agent.isStopped = true;
 
         if (player != null)
@@ -197,6 +207,7 @@ public class EnemyFSM : MonoBehaviour
     void ChasePlayer()
     { 
         agent.isStopped = false;
+        animator.SetBool("isChasing", true);
 
         if (player == null)
         {
@@ -220,6 +231,7 @@ public class EnemyFSM : MonoBehaviour
     void AttackPlayer()
     {
         agent.isStopped = true;
+        // animator.SetBool("isChasing", false);
 
         if (player == null)
         {

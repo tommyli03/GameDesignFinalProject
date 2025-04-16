@@ -16,6 +16,7 @@ public class ScatterShooting : MonoBehaviour
     public Movement move;
 
     public Camera cam;
+    public AudioSource audioSource;
     
     void Update()
     {
@@ -55,6 +56,10 @@ public class ScatterShooting : MonoBehaviour
             if (bulletScript != null)
             {
                 bulletScript.SetDamage(weaponDamage);
+            }
+
+            if (audioSource != null) {
+                audioSource.Play();
             }
 
             Destroy(bullet, 0.5f); // RANGE

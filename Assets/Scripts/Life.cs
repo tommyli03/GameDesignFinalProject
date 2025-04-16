@@ -8,6 +8,8 @@ public class Life : MonoBehaviour
 
     public bool isPlayer = false;
     private bool isDead = false;
+    public AudioSource hitSound;
+
 
     public void take_Damage(float damage) 
     {
@@ -21,6 +23,11 @@ public class Life : MonoBehaviour
         if (amount <= 0)
         {
             Die();
+        }
+
+        if (hitSound != null)
+        {
+            hitSound.Play();
         }
     }
     

@@ -34,7 +34,12 @@ public class Movement : MonoBehaviour
     public float volFade = 5f;
 
     private float targetVolumeWeight = 0f;
-    
+    public AudioSource footstepAudio;
+    private Vector3 lastPosition;
+
+    public AudioSource dashAudioSource;          
+
+
 
     void Start()
     {
@@ -125,6 +130,27 @@ public class Movement : MonoBehaviour
         if (activeGrapple)
             rb.velocity = Vector3.zero;*/
 
+        // FOOTSTEP SOUND — Movement based on actual displacement
+        bool isGrounded = IsGrounded();
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+        bool isActuallyMoving = distanceMoved > 0.01f;
+
+        if (isActuallyMoving && isGrounded)
+        {
+            if (!footstepAudio.isPlaying)
+            {
+                footstepAudio.Play();
+            }
+        }
+        else
+        {
+            if (footstepAudio.isPlaying)
+            {
+                footstepAudio.Stop();
+            }
+        }
+
+        lastPosition = transform.position;
 
     }
 
@@ -134,6 +160,11 @@ public class Movement : MonoBehaviour
     {
         float startTime = Time.time;
         targetVolumeWeight = 1f;
+
+        if (dashAudioSource != null)
+        {
+            dashAudioSource.Play();
+        }
 
         // Get the dash direction based on the character's forward direction
         Vector3 dashDirection = transform.forward;
@@ -151,6 +182,9 @@ public class Movement : MonoBehaviour
         }
 
         targetVolumeWeight = 0f;
+
+
+
 
         // End the dash
         //rb.velocity = Vector3.zero; // Stop the dash movement

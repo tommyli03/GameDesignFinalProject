@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDied()
     {
+        Time.timeScale = 0f;
         deathScreen.SetActive(true); // Show death screen
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -31,5 +32,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the level
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1f;
     }
 }

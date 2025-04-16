@@ -19,6 +19,7 @@ public class Shooting : MonoBehaviour
     public Camera cam;
 
     public float rAngle = 0f; //total recovery, 6-10f, 5 degrees
+    public AudioSource shootAudio;
 
 
     
@@ -93,6 +94,11 @@ public class Shooting : MonoBehaviour
             muzzleFlash.Play(); // replays the burst cleanly
 
         }
+        if (shootAudio != null)
+        {
+            shootAudio.Play(); // Plays once per shot
+        }
+
 
 
         Destroy(bullet, 2f);

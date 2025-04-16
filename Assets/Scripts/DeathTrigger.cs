@@ -13,7 +13,6 @@ public class DeathTrigger : MonoBehaviour
         {
             Debug.Log("Player hit the Death Zone! Triggering death screen...");
             FindFirstObjectByType<GameManager>().PlayerDied();
-
         }
     }
 }
