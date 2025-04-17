@@ -2,27 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Summary: Handles dynamic camera zoom effects during gameplay actions like dashing.
+ * This script increases the camera's field of view (FOV) briefly during a dash for visual emphasis,
+ * then smoothly returns to the original FOV. It pulls dash duration from the Movement component.
+ */
+
 public class CameraZoom : MonoBehaviour
 {
-
-
     private float zoomFOV = 100f; // Field of view during zoom
     public float zoomDuration = 0.6f; // Duration of the zoom
     public float fovChange = 25f;
     public float distort = 10f;
-
     private float originalFOV;
     public Camera cam;
     private float endTime;
-
     private float distortEnd;
-
-
     private Movement move;
 
-
-
-    // Start is called before the first frame update
+    // Initialize variables and configure zoom based on Movement component's dash duration
     void Start()
     {
         move = GetComponent<Movement>();
@@ -35,7 +33,7 @@ public class CameraZoom : MonoBehaviour
         distortEnd = Time.time -1f;
     }
 
-    // Update is called once per frame
+    // Continuously adjust FOV to create a smooth zoom effect during active zoom window
     void Update()
     {   
         if (Time.time < endTime)
@@ -51,9 +49,10 @@ public class CameraZoom : MonoBehaviour
 
     }
 
+    // Triggers the zoom effect with a custom duration and FOV change intensity
     public void Zoom(float duration, float intensity)
     {
-        endTime = Time.time + duration * .75f;
+        endTime = Time.time + duration * .75f; 
         fovChange = intensity;
     }
 }
