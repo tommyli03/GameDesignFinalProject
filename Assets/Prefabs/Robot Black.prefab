@@ -1896,7 +1896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5820212641530409341}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -6.96, y: -2.1, z: 2.05}
   m_LocalScale: {x: 1.0442, y: 1.0442, z: 1.0442}
   m_ConstrainProportionsScale: 0
@@ -1911,7 +1911,7 @@ Transform:
   - {fileID: 976852678847665736}
   - {fileID: 1001063434409136896}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &8936852937689374977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,12 +1924,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e0b90cbbce44fb6b4bbf20d720b837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount_max: 50
   amount: 50
   onDeath:
     m_PersistentCalls:
       m_Calls: []
   isPlayer: 0
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 5285690584918860024}
 --- !u!54 &8161107521542271049
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2020,7 +2021,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 143
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

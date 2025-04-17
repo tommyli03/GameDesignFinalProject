@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3597601725358338327
 Transform:
   m_ObjectHideFlags: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -0.37, y: 3.56, z: 12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4634088904655084132}
@@ -127,10 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e0b90cbbce44fb6b4bbf20d720b837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 50
+  amount_max: 100
+  amount: 100
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  isPlayer: 0
+  hitSound: {fileID: 0}
 --- !u!54 &2775420114431182523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,7 +212,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.007546664, y: -0.70854473, z: 0.7056238, w: 0.0015738907}
   m_LocalPosition: {x: 0, y: 0.5, z: 0.5}
-  m_LocalScale: {x: 0.15000004, y: 0.5, z: 0.15000004}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3597601725358338327}
@@ -363,6 +366,7 @@ MonoBehaviour:
   bulletSpeed: 15
   fireRate: 0.75
   shootPoint: {fileID: 5249244949450175065}
+  damage: 0
 --- !u!1 &9042351322359361719
 GameObject:
   m_ObjectHideFlags: 0
