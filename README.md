@@ -257,15 +257,24 @@ Our work for this deliverable consists of these 3 main components:
 Sound:
 For each of the 7 sounds we created, there was a bit of trouble adding them into the readme, so we've added them to a folder called "Sound Tests". Each one is a short, 5 to 15 second video displaying the sound.
 They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
+These are the assets used for the sound:
+1. Default Gun and Shotgun Shooting: https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
+2. Walking: https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879
+3. Dashing: https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116#content
+4. Enemy Firing and hitting Enemy: https://assetstore.unity.com/packages/audio/sound-fx/heavy-8-bit-explosions-sounds-289649
+5. Background Music: https://assetstore.unity.com/packages/audio/music/space-threat-free-action-music-205935
 
 UI:
 We focused on three parts of the UI for this iteration- the Health Bar, the Stamina Bar, and the Gun Changing.
 Unfortunately, we were unable to embed the videos into this readme, so all the demonstrations are in a folder called "UI Tests". Each one is a short video that demonstrates the functionality of the intended UI.
 They are labeled appropriately as: "Health_Bar", "Stamina_Bar", and "Gun_Changing".
+These are the assets used for the UI:
+1. https://assetstore.unity.com/search#q=GUI&nf-ec_price_filter=0...0
 
 Animation:
 We were able to get tree and grass animations correctly. Once again, these are placed in the folder "Animation Tests" and are labeled "Tree_Swaying" and "Grass_Swaying", respectively.
-
+These are the assets used for the animation:
+1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
 # Instructions for Testing the Project
 
