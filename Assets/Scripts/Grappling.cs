@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class Grappling : MonoBehaviour
 {
-
- 
     private Movement pm;
     public Transform cam;
     public Transform gunTip;
     public LayerMask Grabbable;
     // public LineRenderer lr;
-
     public GameObject laserBeamPrefab;  // Assign your laser asset in the Inspector
     private GameObject activeLaserBeam; // Stores the instantiated laser
-
     public float maxGrappleDist;
     public float grappleDelayTime;
     public float yOvershoot = 1f;
-
-
     private Vector3 grapplePoint; //change to private later
     public float grapplingCool; //cooldown
     public float gcdTimer = 0;
-
     public KeyCode grappleKey = KeyCode.Mouse1;
     public bool grappling;
     public bool activeGrapple;
-
-
     private float dt; 
 
-
-    // Start is called before the first frame update
     void Start()
     {
         pm = GetComponent<Movement>();
@@ -47,11 +36,13 @@ public class Grappling : MonoBehaviour
             StartGrapple();
         }
 
+        // Decrease cooldown timer over time
         if (gcdTimer > 0)
             gcdTimer -= dt;
     }
 
 
+    // Continuously update laser visual to follow the gun tip and grapple target
     void LateUpdate()
     {
         // if(grappling)
@@ -63,6 +54,7 @@ public class Grappling : MonoBehaviour
         }
     }
 
+    // Updates the laser beam's position, orientation, and length
     private void UpdateLaser()
     {
         if (activeLaserBeam != null)
@@ -76,9 +68,7 @@ public class Grappling : MonoBehaviour
         }
     }
 
-
-
-
+     // Handles initiating a grapple attempt, visualizing the laser, and delaying execution
     private void StartGrapple()
     {
         if (gcdTimer > 0)
@@ -97,8 +87,8 @@ public class Grappling : MonoBehaviour
         }
         else
         {
+            // If no hit, aim forward and cancel after delay
             grapplePoint = cam.position + cam.forward*maxGrappleDist;
-
             Invoke(nameof(StopGrapple), grappleDelayTime);
         }
 
@@ -113,8 +103,7 @@ public class Grappling : MonoBehaviour
         UpdateLaser();
     }
 
-    
-
+    // Called after delay to move player toward grapple point using a ballistic arc
     private void Execute()
     {
         pm.freeze = false;
@@ -135,6 +124,7 @@ public class Grappling : MonoBehaviour
         Invoke(nameof(StopGrapple), 1.3f);
     }
 
+    // Resets grappling state, cleans up visuals, and starts cooldown
     private void StopGrapple()
     {
         Debug.Log("Stopping grapple");

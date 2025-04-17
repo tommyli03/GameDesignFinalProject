@@ -2,22 +2,21 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+/**
+ * Summary: Controls player movement including walking, jumping, dashing, and grappling interaction.
+ * Handles camera rotation, sound feedback, screen effects, and physics-based traversal mechanics.
+ * Includes support for moving platforms and dynamic camera zoom during special moves.
+ */
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 17f;
     public float mouseSensitivity = 2f;
     public Transform firstPersonCamera; 
-
     public Rigidbody rb;
     private float rotationX = 0f;
-
     private Grappling grapple;
-
-
     public bool freeze;
     public bool activeGrapple;
-
-
     private float dashTimer;
     public float dashCool;
     public float dashDuration = .6f;
@@ -25,21 +24,14 @@ public class Movement : MonoBehaviour
     public int stamina = 1; // 1 = ready to dash, 2 = currently dashing, 3 = recharging dash
     private int jumps;
     public int jumpmax = 5;
-
     public CameraZoom cameraZoom;
-
     private float dt;
-
-
     public Volume dashVolume;
     public float volFade = 5f;
-
     private float targetVolumeWeight = 0f;
     public AudioSource footstepAudio;
     private Vector3 lastPosition;
-
     public AudioSource dashAudioSource;          
-
 
 
     void Start()
@@ -51,21 +43,16 @@ public class Movement : MonoBehaviour
         Cursor.visible = false; 
         dashTimer = 0;
         jumps = jumpmax;
-
-        
-
-
         //Physics.gravity = new Vector3(0, -19.62f, 0);
         dt = Time.deltaTime;
     }
 
     void Update()
     {
-        // Print out Stamina State for Checking
         if (stamina == 1) { Debug.Log("Ready to dash!"); }
         if (stamina == 2) { Debug.Log("Dashing!"); }
         if (stamina == 3) { Debug.Log("Recharging!"); }
-
+        
         // Mouse Look
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -91,12 +78,14 @@ public class Movement : MonoBehaviour
         if (dashTimer > 0)
             dashTimer -= dt;
 
+        // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, 15f, rb.velocity.z);
             jumps--;
         }
 
+        // Dashing
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && stamina == 1 && stamina != 2 && stamina != 3)
         {
             Vector3 dashDirection = transform.forward.normalized;
@@ -133,6 +122,7 @@ public class Movement : MonoBehaviour
             }
         }
 
+        // Post-Processing Volume Fade
         if (dashVolume != null)
         {
             dashVolume.weight = Mathf.Lerp(dashVolume.weight, targetVolumeWeight, volFade * Time.deltaTime);
@@ -143,7 +133,6 @@ public class Movement : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, rayLength))
             jumps = jumpmax;
         
-
         if (freeze)
             rb.velocity = Vector3.zero;
 
@@ -176,8 +165,7 @@ public class Movement : MonoBehaviour
 
     }
 
-
-
+    // Dash Coroutine
     System.Collections.IEnumerator Dash()
     {
         float startTime = Time.time;
@@ -200,22 +188,18 @@ public class Movement : MonoBehaviour
             float dashForce = Mathf.Lerp(dashSpeed, 0f, dashProgress);
             rb.velocity = dashDirection * dashForce;
 
-            yield return null; // Wait for the next frame
+            yield return null; 
         }
 
         targetVolumeWeight = 0f;
 
-
-
-
         // End the dash
         //rb.velocity = Vector3.zero; // Stop the dash movement
-        
     }
 
+    // Handles Grapple Movement
     public void JumpToPosition(Vector3 targetPos, float trajectoryHeight)
     {
-
         activeGrapple = true;
         targetV = GetJumpVelo(transform.position, targetPos, trajectoryHeight);
         Invoke(nameof(SetVelo), 0.1f);
@@ -224,7 +208,6 @@ public class Movement : MonoBehaviour
             cameraZoom.Zoom(1.3f, 30f);
         }
         jumps += 1;
-        
     }
 
     private Vector3 targetV;
@@ -234,7 +217,7 @@ public class Movement : MonoBehaviour
         rb.velocity = targetV;
     }
 
-
+    // Calculates the velocity required to jump to a target position in an arc
     public Vector3 GetJumpVelo(Vector3 start, Vector3 end, float trajectoryHeight)
     {
         float gravity = Physics.gravity.y;
@@ -247,12 +230,10 @@ public class Movement : MonoBehaviour
         return velXZ + velY;
     }
 
-
     //For player staying on moving platform
     void OnTriggerEnter(Collider other) {
         jumps = jumpmax;
         
-
         if (other.CompareTag("MovingPlatform")) {
             transform.parent = other.transform;
         }
@@ -260,7 +241,6 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
         jumps = jumpmax;
-        
     }
 
     //For player leaving moving platform
@@ -270,6 +250,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    //Checks if player is on the ground
     public bool IsGrounded()
     {
         RaycastHit hit;
