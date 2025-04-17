@@ -254,6 +254,9 @@ Our work for this deliverable consists of these 3 main components:
 - UI
 - Animation
 
+For each of the 6 sounds we created, there was a bit of trouble adding them into the readme, so we've added them to a folder called "Sound Tests". Each one is a short, 10-20 second video displaying the sound.
+They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", and "Hitting Enemy"
+
 
 # Instructions for Testing the Project
 
