@@ -88,48 +88,76 @@ Model:
 Visual Effects:
 - ~~Add more background to the environment, preferably some brush or trees to simulate a forest/jungle environment~~
 - ~~Employ more realism by using shaders and developing lighting and shadows~~
-- Add some kind of explosion visual ~~and knockback~~ for the shotgun
+- ~~Add some kind of explosion visual ~~and knockback~~ for the shotgun~~
 - ~~Handle the muzzle effects (smoke or sparks) for each weapon~~ and for enemies (not for enemies yet)
-- Add some visual signifier of hitting the enemy with the gun
+- ~~Add some visual signifier of hitting the enemy with the gun~~
 
 Player Mechanics:
-- Make dashing more smooth and employ some kind of animaiton for it
+- ~~Make dashing more smooth and employ some kind of animation for it~~
 - ~~Adjust movement speed until it feels smooth and playable~~
 
 Guns:
 - Add new weapons (~4) and then cull after discussion down to around 5 at most (we decided to lessen the priority of this)
-- Change bullet shape/look for greater realism
+- ~~Change bullet shape/look for greater realism~~
 - ~~Add some knockback on the player to the shotgun for more impact~~
 
 Enemies:
 - ~~Find appropriate models/meshes for the enemies~~
-- Enhance enemy AI so that they don't just stand in one place while idle, and so they lose sight of player after we duck behind a wall
-- Add some knockback on the enemies to the shotgun for more impact
+- ~~Enhance enemy AI so that they don't just stand in one place while idle, and so they lose sight of player after we duck behind a wall~~
+- ~~Add some knockback on the enemies to the shotgun for more impact~~
 
-**Project Part 2 Additions**
+**Project Part 3 Additions**
 - Added player health, we can now take damage and die, thus restarting the game
 - Added animation for destructible terrain
 
 **Project Part 4: Sound, UI, and Animation (Ch 14, 15, 17)**
 
 Sound:
-- Add a sound when the gun is fired, ideally a different sound for each gun
-- Add a sound when an enemy is hit
-- Add some background music (soft instrument)
-- Add a "whoosh" when dashing or jumping
-- Add a sound when walking
+- ~~Add a sound when the gun is fired, ideally a different sound for each gun~~
+- ~~Add a sound when an enemy is hit~~
+- ~~Add some background music (soft instrument)~~
+- ~~Add a "whoosh" when dashing or jumping~~
+- ~~Add a sound when walking~~
 
 UI:
-- Health Bar (position to be determined)
+- ~~Health Bar (position to be determined)~~
 - Bullets Remaining
-- Red glare/vignette when on low health
+- ~~Red glare/vignette when on low health~~
 - Counter for Number of Enemies Alive
-- Dash Cooldown Bar
+- ~~Dash Cooldown Bar~~
 
 Animation:
-- Walking animation
+- ~~Walking animation~~
 - Enemy animation
 - Gun Firing animation (like rotation for recoil)
+
+**Project Part 4 Additions**
+- Finished up some of the Postprocessing
+- Fixed the weapon flickering by switching to using number keys
+- Pausing the game when in the death screen
+- Fixed enemy meshes
+- Added more assets for realism
+- Added more islands
+
+**Project Part 5**
+
+Background/Terrain:
+- Add additional islands
+- Include water on some islands
+- Add new enemy assets for additional archetypes
+- Any additional sounds needed
+
+Gameplay:
+- Refining player movement by making it feel smoother
+- Refining weapons
+- Adding Rocket Launcher
+- Adding Melee Weapon
+
+Goals/Rewards:
+- Add rewards for killing enemies (health and bullets)
+- Vary rewards for different enemy archetypes
+- Add more enemies, focus on making each subsequent island more difficult
+- Add some kind of border to prevent you from leaving without killing enough enemies (?)
 
 
 # Development
@@ -218,6 +246,13 @@ Destructible Terrain:
 
 Muzzle Flash:
 ![Screenshot 2025-04-02 at 11 53 25 PM (2)](https://github.com/user-attachments/assets/35bbb69e-2896-43ef-94ed-73f77c007be2)
+
+**Project Part 4: Sound, UI, and Animation (Ch 14, 15, 17)**
+
+Our work for this deliverable consists of these 3 main components:
+- Sound
+- UI
+- Animation
 
 
 # Instructions for Testing the Project
