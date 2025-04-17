@@ -9,11 +9,17 @@ using UnityEngine.Events;
 
 public class Life : MonoBehaviour
 {
+    public float amount_max;
     public float amount;
     public UnityEvent onDeath;
     public bool isPlayer = false;
     private bool isDead = false;
     public AudioSource hitSound;
+
+    void Start()
+    {
+        amount = amount_max;
+    }
 
     // Method to apply damage to the entity
     public void take_Damage(float damage) 

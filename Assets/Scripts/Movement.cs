@@ -18,9 +18,10 @@ public class Movement : MonoBehaviour
     public bool freeze;
     public bool activeGrapple;
     private float dashTimer;
-    public float dashCool = 1f;
+    public float dashCool;
     public float dashDuration = .6f;
     public float dashSpeed = 50f;
+    public int stamina = 1; // 1 = ready to dash, 2 = currently dashing, 3 = recharging dash
     private int jumps;
     public int jumpmax = 5;
     public CameraZoom cameraZoom;
@@ -48,6 +49,10 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (stamina == 1) { Debug.Log("Ready to dash!"); }
+        if (stamina == 2) { Debug.Log("Dashing!"); }
+        if (stamina == 3) { Debug.Log("Recharging!"); }
+        
         // Mouse Look
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -79,15 +84,13 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 15f, rb.velocity.z);
             jumps--;
         }
-        
+
         // Dashing
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && stamina == 1 && stamina != 2 && stamina != 3)
         {
             Vector3 dashDirection = transform.forward.normalized;
 
             rb.velocity = Vector3.zero;
-
-            
 
             if (cameraZoom != null)
             {
@@ -95,9 +98,28 @@ public class Movement : MonoBehaviour
             }
             StartCoroutine(Dash());
             //rb.AddForce(dashDirection * 1000f, ForceMode.VelocityChange);
-            
-            dashTimer = dashCool;
 
+            stamina = 2;
+            dashTimer = dashDuration; // Start dash duration
+        }
+
+        // Handle stamina-based dash/cooldown timing
+        if (stamina == 2) // Dash is happening
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f)
+            {
+                stamina = 3;
+                dashTimer = dashCool; // Ready to start cooldown
+            }
+        } 
+        else if (stamina == 3) // Cooldown is happening
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f)
+            {
+                stamina = 1; // Ready to dash again
+            }
         }
 
         // Post-Processing Volume Fade
