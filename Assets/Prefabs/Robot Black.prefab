@@ -1484,8 +1484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f46d10d700c643578a71a0866d2ad83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 15
-  angle: 45
+  distance: 24
+  angle: 60
   objectsLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -1505,15 +1505,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425fa82f3389643cdac0efbd6743147d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   sightSensor: {fileID: 343602578150920932}
   playerAttackDistance: 24
   lastShootTime: 0
   bulletPrefab: {fileID: 5933129317354615562, guid: b4debccd51f49494ea6cb27670ebeb08, type: 3}
   bulletSpeed: 60
-  fireRate: 1
+  fireRate: 0.5
   shootPoint: {fileID: 1152162420317509082}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   damage: 10
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  walkPointRange: 5
+  burstCooldown: 0.6
+  attackRange: 15
+  playerInAttackRange: 0
 --- !u!1 &4719548478220118691
 GameObject:
   m_ObjectHideFlags: 0

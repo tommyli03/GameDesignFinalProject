@@ -64,7 +64,7 @@ public class Shooting : MonoBehaviour
         // Add spread to direction
         float spreadX = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
         float spreadY = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
-        Quaternion spreadRotation = Quaternion.Euler(spreadY + rAngle, spreadX, 0);
+        Quaternion spreadRotation = Quaternion.Euler(spreadY + rAngle, spreadX, 0); //This line and the next sets the direction of one bullet as the camera angle, plus a slight random rotation.
         Vector3 finalDirection = spreadRotation * shootDirection;
 
         GameObject bullet = Instantiate(Bullet, ShootPoint.position, Quaternion.LookRotation(finalDirection));
@@ -112,29 +112,4 @@ public class Shooting : MonoBehaviour
     }
 
 
-    // void Shoot()
-    // {
-    //     GameObject bullet = Instantiate(Bullet, ShootPoint.position, ShootPoint.rotation);
-        
-    //     Rigidbody rb = bullet.GetComponent<Rigidbody>();
-    //     if (rb != null)
-    //     {
-    //         float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
-    //         float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
-                
-                
-    //         Vector3 spreadDirection = Quaternion.Euler(currentYAngle + rAngle, currentAngle, 0) * ShootPoint.forward;
-    //         rb.velocity = spreadDirection * bulletSpeed;
-            
-    //     }
-    //     rAngle += recoil;
-
-    //     ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
-    //     if (bulletScript != null)
-    //     {
-    //         bulletScript.SetDamage(weaponDamage);
-    //     }
-        
-    //     Destroy(bullet, 2f);
-    // }
 }

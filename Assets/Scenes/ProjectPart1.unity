@@ -10960,6 +10960,10 @@ PrefabInstance:
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4628981000037250149, guid: 951c713801fa648179d27966d2a1d682, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5820212641530409341, guid: 951c713801fa648179d27966d2a1d682, type: 3}
       propertyPath: m_Name
       value: Robot Black (3)
@@ -23491,6 +23495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343602578150920932, guid: 951c713801fa648179d27966d2a1d682, type: 3}
+      propertyPath: distance
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 984186430133321989, guid: 951c713801fa648179d27966d2a1d682, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.96

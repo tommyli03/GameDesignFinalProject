@@ -1,48 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.AI;
 
 public class FlyingAI : MonoBehaviour
 {
-    public enum EnemyState { Idle, ChasePlayer, AttackPlayer }
-    public EnemyState currentState = EnemyState.Idle; // Start in Idle state
-
     public Sight sightSensor;
     public float playerAttackDistance;
-
-    private NavMeshAgent agent;
-    public float lastShootTime;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float fireRate;
     public Transform shootPoint;
-
     public float damage;
-    
-    private Transform player; // Store player reference
+    public float hoverHeight; 
+    public float floatSpeed = 1f; // Speed of floating motion
+
+    public float attackRange = 24f;
+
+    private Transform player;
+    private Animator animator;
+    private bool alreadyShot;
+    private float lastShootTime;
+    private float originalY; 
+
+    public LayerMask whatIsPlayer;
 
     private void Awake()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
+        animator = GetComponentInParent<Animator>();
+        originalY = transform.position.y;
 
-        if (agent == null)
-        {
-            Debug.LogError("[EnemyFSM] NavMeshAgent is missing on parent!");
-        }
+        // Disable NavMeshAgent if it exists
         
-        if (sightSensor == null)
-        {
-            Debug.LogError("[EnemyFSM] Sight script is missing on AI object!");
-        }
-
-        agent.updateRotation = false; // We handle rotation manually
     }
 
     private void Start()
     {
-        // Try to find the player automatically if not assigned
         if (sightSensor.detectedObject != null)
         {
             player = sightSensor.detectedObject.transform;
@@ -51,81 +44,68 @@ public class FlyingAI : MonoBehaviour
 
     void Update()
     {
-        if (sightSensor.detectedObject != null)
+        Float();
+        if (sightSensor.detectedObject == null)
         {
-            player = sightSensor.detectedObject.transform;
+            Idle();
         }
+        else 
+        {
+            
+            player = sightSensor.detectedObject.transform;
+            AttackPlayer();
+        }
+    }
 
-        // Debug.Log("Current state: " + currentState);
-        if (currentState == EnemyState.Idle) Idle();
-        else if (currentState == EnemyState.ChasePlayer) ChasePlayer();
-        else AttackPlayer();
+    void Float()
+    {
+        // Hover at a fixed height with slight bobbing
+        Vector3 newp = transform.position;
+        newp.y = originalY + hoverHeight + Mathf.Sin(Time.time * floatSpeed) * 0.3f;
+        transform.position = newp;
     }
 
     void Idle()
     {
-        agent.isStopped = true;
-
-        if (player != null)
-        {
-            currentState = EnemyState.ChasePlayer;
-        }
-    }
-
-    void ChasePlayer()
-    { 
-        agent.isStopped = false;
-
-        if (player == null)
-        {
-            currentState = EnemyState.Idle; // Stop moving if player is lost
-            return;
-        }
-
-        // Move towards the player
-        agent.SetDestination(player.position);
-
-        // Face the player smoothly
-        LookTo(player.position);
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer < playerAttackDistance)
-        {
-            currentState = EnemyState.AttackPlayer;
-        }
+        // Just float in place when no player is detected
+        LookTo(transform.position + transform.forward * 10f); // Look forward
     }
 
     void AttackPlayer()
     {
-        agent.isStopped = true;
-
-        if (player == null)
-        {
-            currentState = EnemyState.Idle;
-            return;
-        } 
-
-        // Ensure the robot faces the player correctly
+        // Always face the player
         LookTo(player.position);
 
-        // Shoot at the player
-        Shoot();
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > playerAttackDistance * 1.1f)
+        
+        if (!alreadyShot)
         {
-            currentState = EnemyState.ChasePlayer;
+            Shoot();
+            alreadyShot = true;
+            Invoke(nameof(ResetAttack), fireRate);
         }
+    }
+
+    void ResetAttack()
+    {
+        alreadyShot = false;
     }
 
     void Shoot()
     {
         var timeSinceLastShoot = Time.time - lastShootTime;
+        int bullets = 5;
         if (timeSinceLastShoot > fireRate)
         {
             lastShootTime = Time.time;
 
             if (player == null) return;
+
+            if (bullets == 0)
+            {
+                //Dash();
+                return;
+            }
+            bullets--;
 
             // Calculate direction to player
             Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
@@ -146,24 +126,17 @@ public class FlyingAI : MonoBehaviour
                 bulletScript.SetDamage(damage);
             }
 
-            Destroy(bullet, 2f);
+            Destroy(bullet, 1f);
         }
     }
-
 
     void LookTo(Vector3 targetPosition)
     {
         if (transform.parent != null)
         {
             Vector3 lookDirection = (targetPosition - transform.parent.position).normalized;
-            lookDirection.y = 0; // Keep rotation flat to avoid tilting
-            transform.parent.forward = Vector3.Lerp(transform.parent.forward, lookDirection, Time.deltaTime * 5f); // Smooth rotation
+            lookDirection.y = 0; // Keep rotation flat
+            transform.parent.forward = Vector3.Lerp(transform.parent.forward, lookDirection, Time.deltaTime * 5f);
         }
-    }
-
-    private void OnDrawGizmos() 
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, playerAttackDistance);
     }
 }

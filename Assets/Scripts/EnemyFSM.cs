@@ -3,133 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
-    // public enum EnemyState { Idle, ChasePlayer, AttackPlayer }
-    // public EnemyState currentState = EnemyState.Idle; // Start in Idle state
-
-    // public Sight sightSensor;
-    // public float playerAttackDistance;
-
-    // private NavMeshAgent agent;
-    // public float lastShootTime;
-    // public GameObject bulletPrefab;
-    // public float bulletSpeed;
-    // public float fireRate;
-    // public Transform shootPoint;
-    
-
-    // private void Awake()
-    // {
-    //     agent = GetComponentInParent<NavMeshAgent>();
-      
-    //     if (agent == null)
-    //     {
-    //         print("[EnemyFSM] NavMeshAgent is missing on parent!");
-    //     }
-        
-    //     if (sightSensor == null)
-    //     {
-    //         print("[EnemyFSM] Sight script is missing on AI object!");
-    //     }
-
-    //     agent.updateRotation = false;
-    // }
-
-    // void Update()
-    // {
-    //     print("Current state: " + currentState);
-    //     if (currentState == EnemyState.Idle) { Idle(); }
-    //     else if (currentState == EnemyState.ChasePlayer) { ChasePlayer(); }
-    //     else { AttackPlayer(); }
-    
-    // }
-
-    // void Idle()
-    // {
-    //     agent.isStopped = true;
-    //     if (sightSensor.detectedObject != null)
-    //     {
-    //         currentState = EnemyState.ChasePlayer;
-    //     }
-    // }
-
-    // void ChasePlayer()
-    // { 
-    //     agent.isStopped = false;
-    //     agent.ResetPath();
-
-    //     if (sightSensor.detectedObject == null)
-    //     {
-    //         currentState = EnemyState.Idle; // Stop moving if player is lost
-    //         return;
-    //     }
-
-    //     // Move towards the player
-    //     agent.SetDestination(sightSensor.detectedObject.transform.position);
-
-    //     LookTo(sightSensor.detectedObject.transform.position);
-
-    //     float distanceToPlayer = Vector3.Distance(transform.position, sightSensor.detectedObject.transform.position);
-
-    //     if (distanceToPlayer < playerAttackDistance)
-    //     {
-    //         currentState = EnemyState.AttackPlayer;
-    //     }
-    // }
-
-    // void AttackPlayer()
-    // {
-    //     agent.isStopped = true;
-
-    //     if (sightSensor.detectedObject == null)
-    //     {
-    //         currentState = EnemyState.Idle;
-    //         return;
-    //     } 
-
-    //     LookTo(sightSensor.detectedObject.transform.position);
-    //     Shoot();
-
-    //     float distanceToPlayer = Vector3.Distance(transform.position, sightSensor.detectedObject.transform.position);
-
-    //     if (distanceToPlayer > playerAttackDistance * 1.1f)
-    //     {
-    //         currentState = EnemyState.ChasePlayer;
-    //     }
-    // }
-
-    // void Shoot()
-    // {
-    //     var timeSinceLastShoot = Time.time - lastShootTime;
-    //     if (timeSinceLastShoot > fireRate)
-    //     {
-    //         lastShootTime = Time.time;
-
-    //         GameObject bullet = Instantiate(bulletPrefab, shootPoint.transform.position, shootPoint.transform.rotation);
-
-    //         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-    //         if (rb != null)
-    //         {
-    //             rb.velocity = shootPoint.forward * bulletSpeed;
-    //         }
-
-    //         Destroy(bullet, 2f);
-    //     }
-    // }
-
-    // void LookTo(Vector3 targetPosition)
-    // {
-    //     Vector3 directionToPosition = Vector3.Normalize(targetPosition - transform.parent.position);
-    //     transform.parent.forward = directionToPosition;
-    // }
-
-    // private void OnDrawGizmos() 
-    // {
-    //     Gizmos.color = Color.blue;
-    //     Gizmos.DrawWireSphere(transform.position, playerAttackDistance);
-    // }
-
-    public enum EnemyState { Idle, ChasePlayer, AttackPlayer }
-    public EnemyState currentState = EnemyState.Idle; // Start in Idle state
+   
 
     public Sight sightSensor;
     public float playerAttackDistance;
@@ -141,18 +15,37 @@ public class EnemyFSM : MonoBehaviour
     public float fireRate;
     public Transform shootPoint;
 
+    public LayerMask whatIsGround;
+    public LayerMask whatIsPlayer;
     public float damage;
     
+    //references
     private Transform player; // Store player reference
     private Animator animator;
 
+    //Patrolling
+    public Vector3 walkPoint;
+    
+    public bool walkPointSet;
+    public float walkPointRange;
 
-    private void Awake()
+    //Attacking
+    public float burstCooldown;
+    bool alreadyShot; 
+
+
+    //States
+    public float attackRange;
+    public bool playerInAttackRange;
+    
+    private void Awake() //sets everything up upon start
     {
+
+
         agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponentInParent<Animator>();
 
-         NavMeshHit hit;
+        NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
         {
             transform.position = hit.position;
@@ -167,7 +60,8 @@ public class EnemyFSM : MonoBehaviour
             Debug.LogError("[EnemyFSM] Sight script is missing on AI object!");
         }
 
-        agent.updateRotation = false; // We handle rotation manually
+        agent.updateRotation = false; // We handle rotation manually 
+        walkPointSet = false;
     }
 
     private void Start()
@@ -179,41 +73,63 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    void Update()
+    void Update() //sets state by determining if theres a player, and where they are
     {
-        if (sightSensor.detectedObject != null)
+        if (sightSensor.detectedObject == null)
+        {
+            Idle();
+            playerInAttackRange = false;
+        }
+        else 
         {
             player = sightSensor.detectedObject.transform;
-        }
-
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            if (!playerInAttackRange)
+                ChasePlayer();
+            else
+                AttackPlayer();
         // Debug.Log("Current state: " + currentState);
-        if (currentState == EnemyState.Idle) Idle();
-        else if (currentState == EnemyState.ChasePlayer) ChasePlayer();
-        else AttackPlayer();
-    }
-
-    void Idle()
-    {
-        // animator.SetBool("isChasing", false);
-
-        agent.isStopped = true;
-
-        if (player != null)
-        {
-            currentState = EnemyState.ChasePlayer;
+        
         }
     }
 
-    void ChasePlayer()
+    void Idle() //Idle is randomly walking around
+    {
+        if (!walkPointSet)
+        {
+            SearchWalkPoint(); //grabs a place to walk to, walks there, and repeats
+        }
+        else
+            agent.SetDestination(walkPoint);
+
+        Vector3 distanceWalk = transform.position - walkPoint;
+
+        if (distanceWalk.magnitude < 1f)
+            walkPointSet = false;
+
+        //agent.isStopped = true;
+
+    }
+
+    void SearchWalkPoint() //function for random point to walk to
+    {
+        Debug.LogError("Searching!");
+        float walkx = Random.Range(-walkPointRange, walkPointRange);
+        float walkz = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + walkx, transform.position.y, transform.position.z + walkz);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        {
+            walkPointSet = true;
+        }
+    }
+
+    void ChasePlayer() 
     { 
         agent.isStopped = false;
         animator.SetBool("isChasing", true);
 
-        if (player == null)
-        {
-            currentState = EnemyState.Idle; // Stop moving if player is lost
-            return;
-        }
 
         // Move towards the player
         agent.SetDestination(player.position);
@@ -221,68 +137,72 @@ public class EnemyFSM : MonoBehaviour
         // Face the player smoothly
         LookTo(player.position);
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer < playerAttackDistance)
-        {
-            currentState = EnemyState.AttackPlayer;
-        }
+        
     }
 
     void AttackPlayer()
     {
         agent.isStopped = true;
-        // animator.SetBool("isChasing", false);
-
-        if (player == null)
-        {
-            currentState = EnemyState.Idle;
-            return;
-        } 
+       
 
         // Ensure the robot faces the player correctly
         LookTo(player.position);
 
         // Shoot at the player
-        Shoot();
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > playerAttackDistance * 1.1f)
+        if (!alreadyShot)
         {
-            currentState = EnemyState.ChasePlayer;
+            Shoot();
+            alreadyShot = true;
+            Invoke(nameof(ResetAttack), burstCooldown); //shoots, and then resets the shooting restriction after a cooldown.
+
         }
     }
 
-    void Shoot()
-{
-    var timeSinceLastShoot = Time.time - lastShootTime;
-    if (timeSinceLastShoot > fireRate)
+    void ResetAttack()
     {
-        lastShootTime = Time.time;
-
-        if (player == null) return;
-
-        // Calculate direction to player
-        Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
-
-        // Instantiate the bullet
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.LookRotation(directionToPlayer));
-
-        // Apply force in the correct direction
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.velocity = directionToPlayer * bulletSpeed; // Ensure the bullet moves toward the player
-        }
-
-        ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
-        if (bulletScript != null)
-        {
-            bulletScript.SetDamage(damage);
-        }
-
-        Destroy(bullet, 2f);
+        alreadyShot = false;
     }
-}
+
+    void Shoot() //this one currently doesnt work as intended. everytime I try and change it and then run it, Unity straight up crashes and Im forced to revert it
+    {
+        var timeSinceLastShoot = Time.time - lastShootTime;
+        int bullets = 5;
+        if (timeSinceLastShoot > fireRate)
+        {
+            lastShootTime = Time.time;
+
+            if (player == null) return;
+
+            if (bullets == 0)
+            {
+                //Dash();
+                return;
+            }
+            bullets--;
+
+            // Calculate direction to player
+            Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
+
+            // Instantiate the bullet
+            GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.LookRotation(directionToPlayer));
+
+            // Apply force in the correct direction
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = directionToPlayer * bulletSpeed; // Ensure the bullet moves toward the player
+            }
+
+            ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDamage(damage);
+            }
+
+            Destroy(bullet, 1f);
+        }
+        
+    }
 
 
     void LookTo(Vector3 targetPosition)
@@ -295,7 +215,7 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos() 
+    void OnDrawGizmos() 
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, playerAttackDistance);
