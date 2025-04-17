@@ -254,8 +254,17 @@ Our work for this deliverable consists of these 3 main components:
 - UI
 - Animation
 
-For each of the 6 sounds we created, there was a bit of trouble adding them into the readme, so we've added them to a folder called "Sound Tests". Each one is a short, 10-20 second video displaying the sound.
-They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", and "Hitting Enemy"
+Sound:
+For each of the 7 sounds we created, there was a bit of trouble adding them into the readme, so we've added them to a folder called "Sound Tests". Each one is a short, 5 to 15 second video displaying the sound.
+They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
+
+UI:
+We focused on three parts of the UI for this iteration- the Health Bar, the Stamina Bar, and the Gun Changing.
+Unfortunately, we were unable to embed the videos into this readme, so all the demonstrations are in a folder called "UI Tests". Each one is a short video that demonstrates the functionality of the intended UI.
+They are labeled appropriately as: "Health_Bar", "Stamina_Bar", and "Gun_Changing".
+
+Animation:
+We were able to get tree and grass animations correctly. Once again, these are placed in the folder "Animation Tests" and are labeled "Tree_Swaying" and "Grass_Swaying", respectively.
 
 
 # Instructions for Testing the Project
