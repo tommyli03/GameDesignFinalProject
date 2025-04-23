@@ -10,6 +10,8 @@ public class FlyingAI : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float fireRate;
+
+    public float burstCooldown;
     public Transform shootPoint;
     public float damage;
     public float hoverHeight; 
@@ -21,13 +23,19 @@ public class FlyingAI : MonoBehaviour
     private Animator animator;
     private bool alreadyShot;
     private float lastShootTime;
+
+
     private float originalY; 
 
     public LayerMask whatIsPlayer;
 
+    private Rigidbody rb;
+
     private void Awake()
     {
         animator = GetComponentInParent<Animator>();
+        rb = GetComponent<Rigidbody>(); // Get Rigidbody component
+        rb.useGravity = false; // Disable gravity
         originalY = transform.position.y;
 
         // Disable NavMeshAgent if it exists
@@ -60,9 +68,16 @@ public class FlyingAI : MonoBehaviour
     void Float()
     {
         // Hover at a fixed height with slight bobbing
-        Vector3 newp = transform.position;
-        newp.y = originalY + hoverHeight + Mathf.Sin(Time.time * floatSpeed) * 0.3f;
-        transform.position = newp;
+
+
+        float newY = originalY + hoverHeight + Mathf.Sin(Time.time * floatSpeed) * 0.3f;
+        float swayX = Mathf.Sin(Time.time * floatSpeed * 0.5f) * 0.1f;
+        float swayZ = Mathf.Cos(Time.time * floatSpeed * 0.5f) * 0.1f;
+
+
+        Vector3 target = new Vector3(transform.position.x + swayX, newY, transform.position.z + swayZ);
+
+        rb.MovePosition(Vector3.Lerp(transform.position, target, Time.deltaTime * 5f));
     }
 
     void Idle()
@@ -79,9 +94,9 @@ public class FlyingAI : MonoBehaviour
         
         if (!alreadyShot)
         {
-            Shoot();
+            Burst();
             alreadyShot = true;
-            Invoke(nameof(ResetAttack), fireRate);
+            Invoke(nameof(ResetAttack), burstCooldown);
         }
     }
 
@@ -90,22 +105,21 @@ public class FlyingAI : MonoBehaviour
         alreadyShot = false;
     }
 
-    void Shoot()
+    void Burst() //this one currently doesnt work as intended. everytime I try and change it and then run it, Unity straight up crashes and Im forced to revert it
     {
         var timeSinceLastShoot = Time.time - lastShootTime;
-        int bullets = 5;
-        if (timeSinceLastShoot > fireRate)
+        for(int i=0; i<5; i++)
         {
-            lastShootTime = Time.time;
+            Invoke(nameof(Shoot), (i*fireRate+.05f));
+        }
+        
+        
+    }
+
+    void Shoot()
+    {
 
             if (player == null) return;
-
-            if (bullets == 0)
-            {
-                //Dash();
-                return;
-            }
-            bullets--;
 
             // Calculate direction to player
             Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
@@ -127,7 +141,6 @@ public class FlyingAI : MonoBehaviour
             }
 
             Destroy(bullet, 1f);
-        }
     }
 
     void LookTo(Vector3 targetPosition)
