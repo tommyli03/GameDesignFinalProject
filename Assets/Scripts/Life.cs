@@ -15,6 +15,9 @@ public class Life : MonoBehaviour
     public bool isPlayer = false;
     private bool isDead = false;
     public AudioSource hitSound;
+    public GameObject healthPackPrefab;
+    [Range(0f, 1f)] public float healthDropChance = 1.0f; 
+    public AudioClip pickupSound;
 
     void Start()
     {
@@ -53,7 +56,17 @@ public class Life : MonoBehaviour
         if (isPlayer) {
             GameManager.Instance.PlayerDied();
         } else {
+            TryDropHealthPack();
             Destroy(gameObject);
         }
     }
+
+    private void TryDropHealthPack()
+    {
+        if (healthPackPrefab != null && Random.value < healthDropChance)
+        {
+            Instantiate(healthPackPrefab, transform.position + Vector3.up * 0.3f, Quaternion.identity);
+        }
+    }
+
 }

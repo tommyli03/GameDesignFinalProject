@@ -38,6 +38,7 @@ public class EnemyFSM : MonoBehaviour
     public float attackRange;
     public bool playerInAttackRange;
     
+    
     private void Awake() //sets everything up upon start
     {
 

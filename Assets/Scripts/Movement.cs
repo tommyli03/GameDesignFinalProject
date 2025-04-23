@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (stamina == 1) { Debug.Log("Ready to dash!"); }
+        // if (stamina == 1) { Debug.Log("Ready to dash!"); }
         if (stamina == 2) { Debug.Log("Dashing!"); }
         if (stamina == 3) { Debug.Log("Recharging!"); }
         

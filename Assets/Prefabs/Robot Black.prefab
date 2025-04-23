@@ -1942,6 +1942,8 @@ MonoBehaviour:
       m_Calls: []
   isPlayer: 0
   hitSound: {fileID: 5285690584918860024}
+  healthPackPrefab: {fileID: 4115710794844797191, guid: 7b50265cb3277490e82429b15378dd8a, type: 3}
+  healthDropChance: 1
 --- !u!54 &8161107521542271049
 Rigidbody:
   m_ObjectHideFlags: 0
