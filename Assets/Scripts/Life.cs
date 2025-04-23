@@ -17,7 +17,7 @@ public class Life : MonoBehaviour
     public AudioSource hitSound;
     public GameObject healthPackPrefab;
     [Range(0f, 1f)] public float healthDropChance = 1.0f; 
-    public AudioClip pickupSound;
+    
 
     void Start()
     {
