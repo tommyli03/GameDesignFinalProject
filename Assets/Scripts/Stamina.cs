@@ -6,8 +6,8 @@ public class Stamina : MonoBehaviour
 {
     public GameObject playerObj;
     public Texture2D tickTexture;
-    public Vector2 startPosition = new Vector2(45, 84); // Position below health bar
-    public Vector2 tickSize = new Vector2(15.5f, 25);
+    private Vector2 relativeStartPosition = new Vector2(0.05f, 0.125f); // 5% from top-left
+    private Vector2 relativeTickSize = new Vector2(0.0125f, 0.05f); // Tick size relative to screen
     private int totalTicks = 50;
     private int currentTicks;
     private bool isRecharging = false;
@@ -85,17 +85,25 @@ public class Stamina : MonoBehaviour
             }
         }
     }
-        void OnGUI()
+    void OnGUI()
     {
         if (tickTexture == null) return;
+
+        // Get current screen dimensions
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // Convert relative values into actual pixel values
+        Vector2 scaledStartPosition = new Vector2(screenWidth * relativeStartPosition.x, screenHeight * relativeStartPosition.y);
+        Vector2 scaledTickSize = new Vector2(screenWidth * relativeTickSize.x, screenHeight * relativeTickSize.y);
 
         for (int i = 0; i < totalTicks; i++)
         {
             Rect tickRect = new Rect(
-                startPosition.x + (tickSize.x) * i,
-                startPosition.y,
-                tickSize.x,
-                tickSize.y
+                scaledStartPosition.x + (scaledTickSize.x * i),
+                scaledStartPosition.y,
+                scaledTickSize.x,
+                scaledTickSize.y
             );
 
             if (i < currentTicks)
@@ -104,6 +112,7 @@ public class Stamina : MonoBehaviour
             }
         }
     }
+
 
     public bool IsStaminaFull()
     {

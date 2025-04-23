@@ -9,8 +9,8 @@ public class TickHealthBar : MonoBehaviour
     public int maxTicks = 50; // Total number of tick boxes
     public Color edgeGlowColor = new Color(1f, 0f, 0f, 0.5f);
 
-    public Vector2 startPosition = new Vector2(45, 34); // Top-left corner
-    public Vector2 tickSize = new Vector2(15.5f, 25); // Width x Height of each tick
+    private Vector2 relativeStartPosition = new Vector2(0.05f, 0.075f); // 5% from top-left
+    private Vector2 relativeTickSize = new Vector2(0.0125f, 0.05f); // Tick size relative to screen
 
     // Variables for fade and growth effect after health is below 30%
     private float fadeDuration = 2f; // Time to fully fade in
@@ -27,9 +27,15 @@ public class TickHealthBar : MonoBehaviour
         Life playerLife = playerObj.transform.Find("Player").GetComponent<Life>();
         if (playerLife == null || playerLife.amount_max <= 0) return;
 
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        Vector2 startPosition = new Vector2(screenWidth * relativeStartPosition.x, screenHeight * relativeStartPosition.y);
+        Vector2 tickSize = new Vector2(screenWidth * relativeTickSize.x, screenHeight * relativeTickSize.y);
+        
         float healthRatio = Mathf.Clamp01(playerLife.amount / playerLife.amount_max);
         int currentTicks = Mathf.RoundToInt(healthRatio * maxTicks);
-
+        
         if (healthRatio < 0.3f)
         {
             // Start fading in and growing the glow
@@ -41,6 +47,7 @@ public class TickHealthBar : MonoBehaviour
             // Reset the fade effect when health is above 30%
             currentGlowSize = 0f;
             currentAlpha = 0f;
+            fadeTimer = 0f;
         }
 
         for (int i = 0; i < maxTicks; i++)
