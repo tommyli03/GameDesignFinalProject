@@ -9,6 +9,8 @@ TagManager:
   - Destructible
   - CinemachineTarget
   - HealthPack
+  - Enemy
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

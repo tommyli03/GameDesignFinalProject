@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: -8667027555175138642}
   m_Layer: 7
   m_Name: Robot Black
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

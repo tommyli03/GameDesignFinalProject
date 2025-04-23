@@ -11,7 +11,7 @@ public class HealthPickup : MonoBehaviour
     {
         Debug.Log("Trigger entered by: " + other.name);
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerBody"))
         {
             Debug.Log("Player detected, attempting heal.");
 
