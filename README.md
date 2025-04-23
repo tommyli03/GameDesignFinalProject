@@ -143,8 +143,7 @@ Animation:
 
 Background/Terrain:
 - Add additional islands
-- Include water on some islands
-- Add new enemy assets for additional archetypes
+- Add new enemy assets for additional archetypes 
 - Any additional sounds needed
 
 Gameplay:
