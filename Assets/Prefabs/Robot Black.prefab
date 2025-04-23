@@ -1509,8 +1509,8 @@ MonoBehaviour:
   playerAttackDistance: 24
   lastShootTime: 0
   bulletPrefab: {fileID: 5933129317354615562, guid: b4debccd51f49494ea6cb27670ebeb08, type: 3}
-  bulletSpeed: 60
-  fireRate: 0.5
+  bulletSpeed: 40
+  fireRate: 0.1
   shootPoint: {fileID: 1152162420317509082}
   whatIsGround:
     serializedVersion: 2
@@ -1522,9 +1522,10 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 5
-  burstCooldown: 0.6
-  attackRange: 15
+  burstCooldown: 1.7
+  stationaryAttackRange: 15
   playerInAttackRange: 0
+  distWalk: 0
 --- !u!1 &4719548478220118691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,7 +1987,7 @@ NavMeshAgent:
   m_Speed: 10
   m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 90
+  m_AngularSpeed: 450
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

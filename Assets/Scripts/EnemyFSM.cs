@@ -35,8 +35,10 @@ public class EnemyFSM : MonoBehaviour
 
 
     //States
-    public float attackRange;
+    public float stationaryAttackRange;
     public bool playerInAttackRange;
+
+    public float distWalk;
     
     
     private void Awake() //sets everything up upon start
@@ -83,8 +85,10 @@ public class EnemyFSM : MonoBehaviour
         }
         else 
         {
+            agent.speed = 10f;
+            agent.updateRotation = false;
             player = sightSensor.detectedObject.transform;
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, stationaryAttackRange, whatIsPlayer);
             if (!playerInAttackRange)
                 ChasePlayer();
             else
@@ -96,6 +100,8 @@ public class EnemyFSM : MonoBehaviour
 
     void Idle() //Idle is randomly walking around
     {
+        agent.speed = 2f;
+        agent.updateRotation = true;
         if (!walkPointSet)
         {
             SearchWalkPoint(); //grabs a place to walk to, walks there, and repeats
@@ -104,10 +110,13 @@ public class EnemyFSM : MonoBehaviour
             agent.SetDestination(walkPoint);
 
         Vector3 distanceWalk = transform.position - walkPoint;
-
-        if (distanceWalk.magnitude < 1f)
-            walkPointSet = false;
-
+        distWalk = distanceWalk.magnitude;
+        if (distanceWalk.magnitude < 2f)
+        {
+            Debug.LogError("Setting false!");
+            //walkPointSet = false;
+            Invoke(nameof(SearchWalkPoint), burstCooldown);
+        }
         //agent.isStopped = true;
 
     }
@@ -119,11 +128,13 @@ public class EnemyFSM : MonoBehaviour
         float walkz = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + walkx, transform.position.y, transform.position.z + walkz);
+        walkPointSet = true;
+        
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
-        }
+        //old code that I cant find out how to debug. will come back and use if I figure it out
+        //if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        //    walkPointSet = true;
+        
     }
 
     void ChasePlayer() 
@@ -152,7 +163,7 @@ public class EnemyFSM : MonoBehaviour
         // Shoot at the player
         if (!alreadyShot)
         {
-            Shoot();
+            Burst();
             alreadyShot = true;
             Invoke(nameof(ResetAttack), burstCooldown); //shoots, and then resets the shooting restriction after a cooldown.
 
@@ -164,22 +175,21 @@ public class EnemyFSM : MonoBehaviour
         alreadyShot = false;
     }
 
-    void Shoot() //this one currently doesnt work as intended. everytime I try and change it and then run it, Unity straight up crashes and Im forced to revert it
+    void Burst() //this one currently doesnt work as intended. everytime I try and change it and then run it, Unity straight up crashes and Im forced to revert it
     {
         var timeSinceLastShoot = Time.time - lastShootTime;
-        int bullets = 5;
-        if (timeSinceLastShoot > fireRate)
+        for(int i=0; i<5; i++)
         {
-            lastShootTime = Time.time;
+            Invoke(nameof(Shoot), (i*fireRate+.05f));
+        }
+        
+        
+    }
+
+    void Shoot()
+    {
 
             if (player == null) return;
-
-            if (bullets == 0)
-            {
-                //Dash();
-                return;
-            }
-            bullets--;
 
             // Calculate direction to player
             Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
@@ -201,8 +211,6 @@ public class EnemyFSM : MonoBehaviour
             }
 
             Destroy(bullet, 1f);
-        }
-        
     }
 
 
