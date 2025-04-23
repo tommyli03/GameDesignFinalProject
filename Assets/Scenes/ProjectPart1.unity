@@ -24961,6 +24961,22 @@ PrefabInstance:
       propertyPath: shootAudio
       value: 
       objectReference: {fileID: 1805529831}
+    - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: yOvershoot
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: grapplingCool
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: maxGrappleDist
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: grappleDelayTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8340656556474189439, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17194067
