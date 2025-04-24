@@ -10,6 +10,8 @@ public class ContactDamage : MonoBehaviour
     public float volFade = 5f;
     private float targetVolumeWeight = 0f;
     public float fxlength;
+    
+    public float duration = 0f;
 
     /**
     * Summary: Handles collision-based damage interactions for projectiles or hazards.
@@ -55,8 +57,8 @@ public class ContactDamage : MonoBehaviour
         if (other.GetComponentInParent<Movement>() != null)
             StartCoroutine(Bleed());
 
-        Destroy(gameObject);
         
+        StartCoroutine(DelayedDestroy());
         // Handle damage to player-like objects with a Life component
         Life life = other.GetComponentInParent<Life>();  
         if (life != null)
@@ -85,5 +87,14 @@ public class ContactDamage : MonoBehaviour
                 Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             }
         }
+
+        
+    }
+
+
+    System.Collections.IEnumerator DelayedDestroy() //here in case you want the bullet to continue going for a little (only in use for sniper)
+    {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
     }
 }

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Time
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: -7411592496310098245, guid: a73b838125fed47d4aca696f2180aa98, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5933129317354615562, guid: a73b838125fed47d4aca696f2180aa98, type: 3}
       propertyPath: m_Name
       value: SniperBullet Variant

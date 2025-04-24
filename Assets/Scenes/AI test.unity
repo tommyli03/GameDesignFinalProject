@@ -9462,6 +9462,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4628981000037250149, guid: 951c713801fa648179d27966d2a1d682, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 991945292}
+    - target: {fileID: 4628981000037250149, guid: 951c713801fa648179d27966d2a1d682, type: 3}
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
@@ -10708,6 +10712,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+--- !u!54 &991945292 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8161107521542271049, guid: 951c713801fa648179d27966d2a1d682, type: 3}
+  m_PrefabInstance: {fileID: 906808742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &992685940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24747,8 +24756,6 @@ MonoBehaviour:
   tickTexture: {fileID: 2800000, guid: 0cfd497c8bf3fde418beb3fec21b33e1, type: 3}
   maxTicks: 50
   edgeGlowColor: {r: 1, g: 0, b: 0, a: 0.5}
-  startPosition: {x: 45, y: 34}
-  tickSize: {x: 15.5, y: 25}
 --- !u!224 &7899427829842745958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24943,8 +24950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 2140241866}
   tickTexture: {fileID: 2800000, guid: ba523fd85bea1e448944fe8cabed4b59, type: 3}
-  startPosition: {x: 45, y: 84}
-  tickSize: {x: 15.5, y: 25}
   FILLER: 0
 --- !u!114 &9199584131117843725
 MonoBehaviour:

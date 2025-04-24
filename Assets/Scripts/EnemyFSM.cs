@@ -39,12 +39,14 @@ public class EnemyFSM : MonoBehaviour
     public bool playerInAttackRange;
 
     public float distWalk;
+
+    public Rigidbody rb;
     
     
     private void Awake() //sets everything up upon start
     {
 
-
+        
         agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponentInParent<Animator>();
 
@@ -65,6 +67,11 @@ public class EnemyFSM : MonoBehaviour
 
         agent.updateRotation = false; // We handle rotation manually 
         walkPointSet = false;
+
+
+
+
+        Invoke(nameof(Popup), 3f);
     }
 
     private void Start()
@@ -74,6 +81,18 @@ public class EnemyFSM : MonoBehaviour
         {
             player = sightSensor.detectedObject.transform;
         }
+        
+    }
+
+    void Popup() //have current issue of enemies burying themselves at the start. automatic popup could be a temporary fix
+    {
+        
+        Debug.LogError("Popup!");
+        if (rb == null)
+            Debug.LogError("rigidbody null");
+        rb.velocity = Vector3.zero;
+        rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+
     }
 
     void Update() //sets state by determining if theres a player, and where they are
