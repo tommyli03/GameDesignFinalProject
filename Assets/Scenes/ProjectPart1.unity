@@ -25031,6 +25031,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: laserBeamPrefab
+      value: 
+      objectReference: {fileID: 8735408722482519607, guid: a048bcf1214005047861302d0a4515da, type: 3}
+    - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: grappleDelayTime
       value: 0.1
       objectReference: {fileID: 0}
