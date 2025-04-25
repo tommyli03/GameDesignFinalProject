@@ -139,7 +139,7 @@ Animation:
 - Added more assets for realism
 - Added more islands
 
-**Project Part 5**
+**Project Part 4 Final**
 
 Background/Terrain:
 - ~~Add additional islands~~
@@ -158,12 +158,23 @@ Goals/Rewards:
 - ~~Add more enemies, focus on making each subsequent island more difficult~~
 - Add some kind of border to prevent you from leaving without killing enough enemies (?) // Decided against this in the end, more freedom
 
-**Project Part 5 Additions**
+**Project Part 4: Finishing Touches**
 - Added visible health bars for enemies
 - Improved Sniper and other gun function and playability
 - Added a new grappling hook asset
 - Improved the UI
 - Added health packs
+
+**Final Project Submission**
+
+Clean Up:
+Since most of the functionality is done, we just need to do the following clean-up:
+- Edge testing bugs
+- Invisible box around the island that disappears after killing all enemies
+- Win Screen upon killing all enemies
+- Improve enemy AI
+- Adding Rocket Launcher
+- Adding Melee Weapon
 
 
 # Development
@@ -265,7 +276,7 @@ For each of the 7 sounds we created we've added them to a folder called "Sound T
 They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
 Background_Music:
 
-
+[▶️ Watch Background Music Demo](Sound%20Tests/Background_Music.mov)
 
 Default_Gun_Shooting: 
 
@@ -273,11 +284,11 @@ https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
 
 Shotgun_Shooting: 
 
-
+[▶️ Watch Shotgun Shooting Demo](Sound%20Tests/Shotgun_Shooting.mov)
 
 Walking: 
 
-
+[▶️ Watch Walking Demo](Sound%20Tests/Walking.mov)
 
 Dashing: 
 
@@ -285,11 +296,11 @@ https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
 
 Enemy_Firing: 
 
-
+[▶️ Watch Enemy Firing Demo](Sound%20Tests/Enemy_Firing.mov)
 
 Hitting_Enemy: 
 
-
+[▶️ Watch Hitting Enemy Demo](Sound%20Tests/Hitting_Enemy.mov)
 
 These are the assets used for the sound:
 1. Default Gun and Shotgun Shooting: https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
@@ -319,7 +330,7 @@ Animation:
 We were able to get tree and grass animations correctly.
 Tree animation: 
 
-
+[▶️ Watch Tree Swaying Demo](Animation%20Test/Tree_Swaying.mov)
 
 Grass animation: 
 
@@ -332,26 +343,22 @@ These are the assets used for the animation:
 
 Our work for this deliverable consists of these 3 main components:
 - Background/Terrain
+- Enemies
 - Gameplay
 - Goals/Rewards
 
 
 Background/Terrain:
+We added muliple islands, then populated each island with additional enemies to increase the challenge and engagement. We've also made the game music a little louder.
 
+Enemies:
+We enhanced the enemy AI behavior for smarter, more dynamic encounters. We also added different kinds of enemy archetypes. We also imported new animations for enemy robots. We put health packs on top of enemies to showcase how low health they are.
 
 Gameplay:
-
+We tweaked bullet and gun mechanics for smoother gameplay; this includes fixing the sniper for better accuracy and reliability. We also fixed the bug to the restart screen. Finally, we integrated a new grappling hook asset and fixed the UI issues.
 
 Goals/Rewards:
-We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health.
-
-Tweaked bullet and gun mechanics for smoother gameplay.
-Resolved sniper consistency issues for better accuracy and reliability.
-Integrated grappling hook asset to expand player movement options.
-Populated islands with additional enemies to increase challenge and engagement.
-Enhanced enemy AI behavior for smarter, more dynamic encounters.
-Introduced diverse enemy archetypes, adding variety to combat scenarios.
-
+We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health. We added a health pack to enemy drops in order to reward players. Finally, we added a new cutscene at the beginning of the game to give an overall objective to the game.4 Additions
 
 
 # Instructions for Testing the Project
