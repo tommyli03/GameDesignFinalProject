@@ -128,7 +128,7 @@ UI:
 
 Animation:
 - ~~Walking animation~~
-- Enemy animation
+- ~~Enemy animation~~
 - Gun Firing animation (like rotation for recoil)
 
 **Project Part 4 Additions**
@@ -142,21 +142,28 @@ Animation:
 **Project Part 5**
 
 Background/Terrain:
-- Add additional islands
-- Add new enemy assets for additional archetypes 
-- Any additional sounds needed
+- ~~Add additional islands~~
+- ~~Add new enemy assets for additional archetypes~~ 
+- ~~Any additional sounds needed~~
 
 Gameplay:
-- Refining player movement by making it feel smoother
-- Refining weapons
-- Adding Rocket Launcher
-- Adding Melee Weapon
+- ~~Refining player movement by making it feel smoother~~
+- ~~Refining weapons~~
+- Adding Rocket Launcher // Decided that this was a lower priority over improving the gameplay loop
+- Adding Melee Weapon    // Decided that this was a lower priority over improving the gameplay loop
 
 Goals/Rewards:
-- Add rewards for killing enemies (health and bullets)
-- Vary rewards for different enemy archetypes
-- Add more enemies, focus on making each subsequent island more difficult
-- Add some kind of border to prevent you from leaving without killing enough enemies (?)
+- ~~Add rewards for killing enemies (health and bullets)~~
+- ~~Vary rewards for different enemy archetypes~~
+- ~~Add more enemies, focus on making each subsequent island more difficult~~
+- Add some kind of border to prevent you from leaving without killing enough enemies (?) // Decided against this in the end, more freedom
+
+**Project Part 5 Additions**
+- Added visible health bars for enemies
+- Improved Sniper and other gun function and playability
+- Added a new grappling hook asset
+- Improved the UI
+- Added health packs
 
 
 # Development
@@ -267,6 +274,9 @@ UI:
 We focused on three parts of the UI for this iteration- the Health Bar, the Stamina Bar, and the Gun Changing.
 Unfortunately, we were unable to embed the videos into this readme, so all the demonstrations are in a folder called "UI Tests". Each one is a short video that demonstrates the functionality of the intended UI.
 They are labeled appropriately as: "Health_Bar", "Stamina_Bar", and "Gun_Changing".
+
+
+
 These are the assets used for the UI:
 1. https://assetstore.unity.com/search#q=GUI&nf-ec_price_filter=0...0
 
@@ -274,6 +284,33 @@ Animation:
 We were able to get tree and grass animations correctly. Once again, these are placed in the folder "Animation Tests" and are labeled "Tree_Swaying" and "Grass_Swaying", respectively.
 These are the assets used for the animation:
 1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
+
+**Project Part 5:**
+
+Our work for this deliverable consists of these 3 main components:
+- Background/Terrain
+- Gameplay
+- Goals/Rewards
+
+
+Background/Terrain:
+
+
+Gameplay:
+
+https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
+
+Goals/Rewards:
+We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health.
+
+Tweaked bullet and gun mechanics for smoother gameplay.
+Resolved sniper consistency issues for better accuracy and reliability.
+Integrated grappling hook asset to expand player movement options.
+Populated islands with additional enemies to increase challenge and engagement.
+Enhanced enemy AI behavior for smarter, more dynamic encounters.
+Introduced diverse enemy archetypes, adding variety to combat scenarios.
+
+
 
 # Instructions for Testing the Project
 
