@@ -5988,8 +5988,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 57652ba238da847259963932d419effc, type: 3}
   - {fileID: 2800000, guid: 1e7f926464b644557b86ea356bcbb2b3, type: 3}
   - {fileID: 2800000, guid: 047d1016b636e4b84ac8c271aa21487a, type: 3}
-  iconSize: {x: 200, y: 200}
-  padding: {x: 4, y: 29}
 --- !u!114 &540160755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27106,6 +27104,14 @@ PrefabInstance:
       propertyPath: shootAudio
       value: 
       objectReference: {fileID: 1805529831}
+    - target: {fileID: 5742572535247356685, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: pelletCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742572535247356685, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: weaponDamage
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8020809696151209094, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: yOvershoot
       value: 0.3
@@ -27244,8 +27250,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 57652ba238da847259963932d419effc, type: 3}
   - {fileID: 2800000, guid: 1e7f926464b644557b86ea356bcbb2b3, type: 3}
   - {fileID: 2800000, guid: 047d1016b636e4b84ac8c271aa21487a, type: 3}
-  iconSize: {x: 200, y: 200}
-  padding: {x: 4, y: 29}
 --- !u!224 &7423034400149428849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27321,6 +27325,7 @@ MonoBehaviour:
   tickTexture: {fileID: 2800000, guid: 0cfd497c8bf3fde418beb3fec21b33e1, type: 3}
   maxTicks: 50
   edgeGlowColor: {r: 1, g: 0, b: 0, a: 0.5}
+  barTexture: {fileID: 0}
 --- !u!224 &7899427829842745958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27515,7 +27520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 2140241866}
   tickTexture: {fileID: 2800000, guid: ba523fd85bea1e448944fe8cabed4b59, type: 3}
-  FILLER: 0
+  barTexture: {fileID: 0}
 --- !u!114 &9199584131117843725
 MonoBehaviour:
   m_ObjectHideFlags: 0

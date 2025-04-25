@@ -55,7 +55,7 @@ public class ScatterShooting : MonoBehaviour
             }
             // Apply backward recoil to player based on camera direction
             Vector3 kb = cam.transform.forward.normalized;
-            move.rb.AddForce(kb * -5f, ForceMode.Impulse);
+            move.rb.AddForce(kb * -3f, ForceMode.Impulse);
             
             // Set projectile damage using the ContactDamage script
             ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
