@@ -255,7 +255,7 @@ Muzzle Flash:
 
 **Project Part 4: Sound, UI, and Animation (Ch 14, 15, 17)**
 
-Our work for this deliverable consists of these 3 main components:
+Our work for this deliverable consists of these 3 main components: 
 - Sound
 - UI
 - Animation
