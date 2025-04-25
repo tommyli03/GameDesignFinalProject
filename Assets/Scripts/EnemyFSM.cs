@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Controls enemy AI behavior through finite state logic.
+ * Handles patrolling, chasing the player, and attacking with shooting bursts.
+ * Uses a NavMeshAgent for movement and a Sight sensor for detecting the player.
+ */
 public class EnemyFSM : MonoBehaviour
 {
-   
-
     public Sight sightSensor;
     public float playerAttackDistance;
 
@@ -174,7 +178,7 @@ public class EnemyFSM : MonoBehaviour
     void AttackPlayer()
     {
         agent.isStopped = true;
-       
+        animator.SetBool("isChasing", false);
 
         // Ensure the robot faces the player correctly
         LookTo(player.position);

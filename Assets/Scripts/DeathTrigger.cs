@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Detects when the player or other objects fall into a "death zone" (e.g., off the map).
  * If the player enters the trigger zone, this script calls the GameManager to initiate the death sequence.
  */

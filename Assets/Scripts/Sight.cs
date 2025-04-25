@@ -1,6 +1,12 @@
 using UnityEngine;
 using System;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Provides vision detection for AI using a field of view and line-of-sight check.
+ * Detects valid objects within a radius and view cone, ignoring obstructed targets.
+ * Useful for enemy AI behavior like chasing or targeting based on player visibility.
+ */
 public class Sight : MonoBehaviour
 {
     public float distance;

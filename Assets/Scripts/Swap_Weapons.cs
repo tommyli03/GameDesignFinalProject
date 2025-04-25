@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Handles switching between multiple player weapons using the mouse scroll wheel
  * or number keys (1–9). Only one weapon is active at a time. Wraps around when scrolling past the ends.
  */

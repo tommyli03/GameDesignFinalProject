@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Displays a tick-based health bar with visual feedback when health is critically low.
+ * Draws individual tick textures for current health and adds a glow effect below 30% health.
+ * Fades and grows a screen-edge highlight to alert the player of danger.
+ */
 public class TickHealthBar : MonoBehaviour
 {
     public GameObject playerObj; // Reference to PlayerObj

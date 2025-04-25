@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Controls player movement including walking, jumping, dashing, and grappling interaction.
  * Handles camera rotation, sound feedback, screen effects, and physics-based traversal mechanics.
  * Includes support for moving platforms and dynamic camera zoom during special moves.

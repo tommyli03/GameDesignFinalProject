@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Moves a platform back and forth between two points (pointA and pointB) at a constant speed.
  * Designed to support moving platforms that players can ride or interact with in the game world.
  */

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Heals the player upon contact and plays a pickup sound effect.
+ * Searches for a Life component in the player object or its hierarchy.
+ * Destroys the pickup object after healing is applied.
+ */
 public class HealthPickup : MonoBehaviour
 {
     public float healAmount = 25f;

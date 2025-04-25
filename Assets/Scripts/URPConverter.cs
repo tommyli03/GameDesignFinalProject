@@ -3,6 +3,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Editor utility that converts all Standard and Legacy materials in the project to URP-compatible shaders.
+ * Accessible via the Unity Editor menu under Tools > Force Convert Materials to URP.
+ * Updates shaders in-place to URP Lit or Unlit equivalents and logs the number of materials converted.
+ */
 public static class URPConversionUtility
 {
     [MenuItem("Tools/Force Convert Materials to URP")]

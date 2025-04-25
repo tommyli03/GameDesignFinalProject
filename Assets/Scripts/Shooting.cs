@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Handles single-shot or automatic weapon shooting mechanics.
  * Simulates recoil, spread, bullet velocity, visual and audio effects.
  * Shoots a ray to determine the bullet's target, applies spread in both X/Y axes,

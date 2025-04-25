@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Handles a scatter-shot weapon that fires multiple projectiles ("pellets") with spread.
  * Applies recoil to the player, instantiates bullets, assigns velocity with randomized spread,
  * and sets projectile damage. Includes optional shooting sounds and cooldown via fireRate.

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Displays the currently equipped weapon icon on the screen based on the player's selected weapon.
+ * Pulls icon data from an array and positions the texture at the top-right corner using screen-relative sizing.
+ * Continuously tracks the weapon index from the Swap_Weapons script.
+ */
 public class WeaponIcon : MonoBehaviour
 {
     public GameObject playerObj;

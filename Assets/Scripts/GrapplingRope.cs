@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Unused Script.
+ */
 public class GrapplingRope : MonoBehaviour
 {
     // Start is called before the first frame update

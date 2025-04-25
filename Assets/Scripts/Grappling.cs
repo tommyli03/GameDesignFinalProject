@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Enables player grappling mechanics using a raycast and ballistic jump toward a target point.
+ * Handles cooldown, laser beam visual effects, and movement override during the grapple.
+ * Designed to work with a Movement script for jump trajectory and freeze control.
+ */
 public class Grappling : MonoBehaviour
 {
     private Movement pm;

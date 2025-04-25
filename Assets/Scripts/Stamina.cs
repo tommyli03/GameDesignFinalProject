@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Manages and displays a visual stamina bar made up of ticks for a dash mechanic.
+ * Dynamically recharges stamina based on the dash cooldown and updates UI in OnGUI.
+ * Interacts with the Movement script to track dash usage and cooldown states.
+ */
 public class Stamina : MonoBehaviour
 {
     public GameObject playerObj;

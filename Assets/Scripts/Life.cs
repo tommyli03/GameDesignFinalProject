@@ -16,7 +16,7 @@ public class Life : MonoBehaviour
     private bool isDead = false;
     public AudioSource hitSound;
     public GameObject healthPackPrefab;
-    [Range(0f, 1f)] public float healthDropChance = 1.0f; 
+    [Range(0f, 1f)] public float healthDropChance = 1.0f;
     public AudioClip pickupSound;
 
     private Vector2 healthBarSize = new Vector2(0.75f, 0.1f); // World units
@@ -26,15 +26,20 @@ public class Life : MonoBehaviour
     void Start()
     {
         amount = amount_max;
+        if (!isPlayer)
+        {
+            GameManager.Instance.RegisterEnemy();
+        }
     }
 
     // Method to apply damage to the entity
-    public void take_Damage(float damage) 
+    public void take_Damage(float damage)
     {
         if (isDead) return;
         amount -= damage;
 
-        if (isPlayer) {
+        if (isPlayer)
+        {
             //Debug.Log("Player Life: " + amount);
         }
 
@@ -48,7 +53,7 @@ public class Life : MonoBehaviour
             hitSound.Play();
         }
     }
-    
+
     // Called when the life is depleted
     private void Die()
     {
@@ -57,10 +62,14 @@ public class Life : MonoBehaviour
         onDeath?.Invoke();
 
         // Notify the GameManager that the player has died (triggers UI, pause, etc.)
-        if (isPlayer) {
+        if (isPlayer)
+        {
             GameManager.Instance.PlayerDied();
-        } else {
+        }
+        else
+        {
             TryDropHealthPack();
+            GameManager.Instance.EnemyDied();
             Destroy(gameObject);
         }
     }

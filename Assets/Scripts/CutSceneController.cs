@@ -5,11 +5,17 @@ using Cinemachine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Controls the behavior of an in-game cutscene using a Cinemachine dolly track and virtual camera.
+ * Disables gameplay elements (enemies, weapons, UI) during the cutscene and re-enables them afterward.
+ * Also manages player control scripts (e.g., grappling and weapon swapping) to ensure they're paused during the cutscene.
+ */
 
 public class CutSceneController : MonoBehaviour
 {
     [SerializeField] private GameObject cutsceneMessage;
-    [SerializeField] private GameObject gameUI; 
+    [SerializeField] private GameObject gameUI;
     public GameObject vcamCutscene;                // The virtual camera GameObject
     public CinemachineDollyCart dollyCart;         // The dolly cart moving on the track
     private List<GameObject> weaponObjects = new List<GameObject>();
@@ -20,6 +26,8 @@ public class CutSceneController : MonoBehaviour
     private GameObject[] cachedEnemies;
     private Grappling grapplingScript;
     private Swap_Weapons swapWeapons;
+    private Movement movementScript;
+
 
 
     void Start()
@@ -50,16 +58,17 @@ public class CutSceneController : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
+            movementScript = player.GetComponent<Movement>();
             grapplingScript = player.GetComponent<Grappling>();
             swapWeapons = player.GetComponent<Swap_Weapons>();
-            if (grapplingScript != null && swapWeapons != null)
-                grapplingScript.enabled = false;
-                swapWeapons.enabled = false;
+            if (grapplingScript != null) grapplingScript.enabled = false;
+            if (swapWeapons != null) swapWeapons.enabled = false;
+            if (movementScript != null) movementScript.enabled = false;
         }
 
 
 
-        // ✅ Enable the virtual camera
+        // Enable the virtual camera
         if (vcamCutscene != null)
             vcamCutscene.SetActive(true);
 
@@ -80,6 +89,7 @@ public class CutSceneController : MonoBehaviour
         if (vcamCutscene != null) vcamCutscene.SetActive(false);
         if (grapplingScript != null) grapplingScript.enabled = true;
         if (swapWeapons != null) swapWeapons.enabled = true;
+        if (movementScript != null) movementScript.enabled = true;
 
 
         // Re-enable all enemies
@@ -102,7 +112,7 @@ public class CutSceneController : MonoBehaviour
         if (gameUI != null) gameUI.SetActive(true);
         if (cutsceneMessage != null) cutsceneMessage.SetActive(false);
 
-        // ✅ Snap FirstPersonCamera back to player head
+        // Snap FirstPersonCamera back to player head
         if (firstPersonCamera != null && cameraAnchor != null)
         {
             firstPersonCamera.transform.SetPositionAndRotation(

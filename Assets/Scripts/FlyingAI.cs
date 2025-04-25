@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/**
+ * Members: Eric, Lucas, Thomas
+ * Summary: Controls a floating, flying enemy AI that hovers and shoots at the player.
+ * Uses sinusoidal motion for hovering and performs ranged attacks when the player is detected.
+ * Designed for enemies without NavMeshAgents (e.g., drones or flying bots).
+ */
 public class FlyingAI : MonoBehaviour
 {
     public Sight sightSensor;

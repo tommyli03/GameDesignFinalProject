@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Handles dynamic camera zoom effects during gameplay actions like dashing.
  * This script increases the camera's field of view (FOV) briefly during a dash for visual emphasis,
  * then smoothly returns to the original FOV. It pulls dash duration from the Movement component.

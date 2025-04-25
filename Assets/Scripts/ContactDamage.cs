@@ -2,6 +2,13 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+/**
+    * Members: Eric, Lucas, Thomas
+    * Summary: Handles collision-based damage interactions for projectiles or hazards.
+    * When this object collides with a player or destructible object, it applies damage,
+    * plays a visual effect, and triggers a temporary screen post-processing effect.
+    * Also supports damaging both player characters (Life component) and destructible props (Durability component).
+*/
 public class ContactDamage : MonoBehaviour
 {
     private float damage;
@@ -12,13 +19,6 @@ public class ContactDamage : MonoBehaviour
     public float fxlength;
     
     public float duration = 0f;
-
-    /**
-    * Summary: Handles collision-based damage interactions for projectiles or hazards.
-    * When this object collides with a player or destructible object, it applies damage,
-    * plays a visual effect, and triggers a temporary screen post-processing effect.
-    * Also supports damaging both player characters (Life component) and destructible props (Durability component).
-    */
 
     // Allows external scripts to set the damage value before collision occurs
     public void SetDamage(float newDamage)
