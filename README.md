@@ -288,7 +288,9 @@ These are the assets used for the UI:
 Animation:
 We were able to get tree and grass animations correctly.
 Tree animation: 
-Grass animation: https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
+
+Grass animation: 
+https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
 These are the assets used for the animation:
 1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
@@ -316,8 +318,16 @@ Populated islands with additional enemies to increase challenge and engagement.
 Enhanced enemy AI behavior for smarter, more dynamic encounters.
 Introduced diverse enemy archetypes, adding variety to combat scenarios.
 
+
+
 https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
+
+
+
 https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
+
+
+
 
 # Instructions for Testing the Project
 
