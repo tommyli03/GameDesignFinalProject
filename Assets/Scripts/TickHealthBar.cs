@@ -9,6 +9,10 @@ public class TickHealthBar : MonoBehaviour
     public int maxTicks = 50; // Total number of tick boxes
     public Color edgeGlowColor = new Color(1f, 0f, 0f, 0.5f);
 
+    public Texture2D barTexture; // The sprite that wraps around the tick health bar
+
+    private Vector2 relativeBarPadding = new Vector2(0.005f, 0.04f); // Padding around the ticks relative to screen
+
     private Vector2 relativeStartPosition = new Vector2(0.05f, 0.075f); // 5% from top-left
     private Vector2 relativeTickSize = new Vector2(0.0125f, 0.05f); // Tick size relative to screen
 
@@ -32,9 +36,24 @@ public class TickHealthBar : MonoBehaviour
 
         Vector2 startPosition = new Vector2(screenWidth * relativeStartPosition.x, screenHeight * relativeStartPosition.y);
         Vector2 tickSize = new Vector2(screenWidth * relativeTickSize.x, screenHeight * relativeTickSize.y);
+        Vector2 barPadding = new Vector2(screenWidth * relativeBarPadding.x, screenHeight * relativeBarPadding.y);
         
         float healthRatio = Mathf.Clamp01(playerLife.amount / playerLife.amount_max);
         int currentTicks = Mathf.RoundToInt(healthRatio * maxTicks);
+
+        float totalTicksWidth = tickSize.x * maxTicks;
+        float totalTicksHeight = tickSize.y;
+
+        // Calculate barRect that wraps the tick area with padding
+        Rect barRect = new Rect(
+            startPosition.x - barPadding.x,
+            startPosition.y - barPadding.y,
+            totalTicksWidth + (2 * barPadding.x),
+            totalTicksHeight + (2 * barPadding.y)
+        );
+
+        // Draw the bar background first
+        GUI.DrawTexture(barRect, barTexture);
         
         if (healthRatio < 0.3f)
         {
