@@ -16,7 +16,7 @@ public class DeathTrigger : MonoBehaviour
         Debug.Log("Object entered Death Zone: " + other.name);
         
         // Only respond to the player falling into the zone
-        if (other.CompareTag("Player"))  
+        if (other.CompareTag("PlayerBody"))  
         {
             Debug.Log("Player hit the Death Zone! Triggering death screen...");
             FindFirstObjectByType<GameManager>().PlayerDied();
