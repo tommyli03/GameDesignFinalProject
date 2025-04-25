@@ -19,6 +19,9 @@ public class Life : MonoBehaviour
     [Range(0f, 1f)] public float healthDropChance = 1.0f; 
     public AudioClip pickupSound;
 
+    private Vector2 healthBarSize = new Vector2(0.75f, 0.1f); // World units
+    private Vector3 healthBarOffset = new Vector3(0, 2.5f, 0); // Above the enemy
+
     void Start()
     {
         amount = amount_max;
@@ -66,6 +69,35 @@ public class Life : MonoBehaviour
         if (healthPackPrefab != null && Random.value < healthDropChance)
         {
             Instantiate(healthPackPrefab, transform.position + Vector3.up * 0.3f, Quaternion.identity);
+        }
+    }
+
+    // Draw health bar only for enemies
+    private void OnGUI()
+    {
+        if (isPlayer) return; // No health bar for players
+
+        Vector3 worldPosition = transform.position + healthBarOffset;
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+
+        if (screenPosition.z > 0) // Only draw if in front of camera
+        {
+            float healthPercent = Mathf.Clamp01(amount / amount_max);
+            float barWidth = healthBarSize.x * 100; // Convert to pixels
+            float barHeight = healthBarSize.y * 100;
+
+            // Convert world size to screen space (approximate)
+            Vector2 barPosition = new Vector2(screenPosition.x - (barWidth / 2), Screen.height - screenPosition.y - (barHeight / 2));
+
+            // Background (red)
+            GUI.color = Color.red;
+            GUI.DrawTexture(new Rect(barPosition.x, barPosition.y, barWidth, barHeight), Texture2D.whiteTexture);
+
+            // Foreground (green)
+            GUI.color = Color.green;
+            GUI.DrawTexture(new Rect(barPosition.x, barPosition.y, barWidth * healthPercent, barHeight), Texture2D.whiteTexture);
+
+            GUI.color = Color.white; // Reset GUI color
         }
     }
 
