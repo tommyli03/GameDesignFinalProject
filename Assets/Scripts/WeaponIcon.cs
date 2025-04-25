@@ -6,8 +6,8 @@ public class WeaponIcon : MonoBehaviour
 {
     public GameObject playerObj;
     public Texture2D[] weaponIcons;         // Assign your icons in the correct index order
-    public Vector2 iconSize = new Vector2(64, 64); // Size of the icon box
-    public Vector2 padding = new Vector2(20, 20);   // Distance from top-right corner
+    private Vector2 relativeIconSize = new Vector2(0.175f, 0.25f); // e.g., 17.5% width, 25% height
+    private Vector2 relativePadding = new Vector2(0.03f, 0.03f);  // e.g., 3% padding from top-right
 
     private int currentWeaponIndex = 0;
     private Swap_Weapons swapWeaponsScript;
@@ -45,7 +45,14 @@ public class WeaponIcon : MonoBehaviour
         Texture2D icon = weaponIcons[currentWeaponIndex];
         if (icon == null) return;
 
-        float x = Screen.width - iconSize.x - padding.x;
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // Scale icon size and padding relative to screen dimensions
+        Vector2 iconSize = new Vector2(screenWidth * relativeIconSize.x, screenHeight * relativeIconSize.y);
+        Vector2 padding = new Vector2(screenWidth * relativePadding.x, screenHeight * relativePadding.y);
+
+        float x = screenWidth - iconSize.x - padding.x;
         float y = padding.y;
 
         GUI.DrawTexture(new Rect(x, y, iconSize.x, iconSize.y), icon);

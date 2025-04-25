@@ -6,8 +6,12 @@ public class Stamina : MonoBehaviour
 {
     public GameObject playerObj;
     public Texture2D tickTexture;
-    private Vector2 relativeStartPosition = new Vector2(0.05f, 0.125f); // 5% from top-left
+    private Vector2 relativeStartPosition = new Vector2(0.05f, 0.14f); // 5% from top-left
     private Vector2 relativeTickSize = new Vector2(0.0125f, 0.05f); // Tick size relative to screen
+
+    public Texture2D barTexture; // The sprite that wraps around the tick health bar
+
+    private Vector2 relativeBarPadding = new Vector2(0.005f, 0.04f); // Padding around the ticks relative to screen
     private int totalTicks = 50;
     private int currentTicks;
     private bool isRecharging = false;
@@ -15,7 +19,7 @@ public class Stamina : MonoBehaviour
     private float totalRechargeTime = 0;
     private float rechargeTimer = 0f;
     private float dashTimer = 0f;
-    public float FILLER;
+    private float FILLER;
     void Start()
     {
         currentTicks = totalTicks;
@@ -96,6 +100,21 @@ public class Stamina : MonoBehaviour
         // Convert relative values into actual pixel values
         Vector2 scaledStartPosition = new Vector2(screenWidth * relativeStartPosition.x, screenHeight * relativeStartPosition.y);
         Vector2 scaledTickSize = new Vector2(screenWidth * relativeTickSize.x, screenHeight * relativeTickSize.y);
+
+        float barWidth = scaledTickSize.x * totalTicks + (relativeBarPadding.x * 2 * screenWidth);
+        float barHeight = scaledTickSize.y + (relativeBarPadding.y * 2 * screenHeight);
+
+        // Optional: Draw barTexture behind the ticks
+        if (barTexture != null)
+        {
+            Rect barRect = new Rect(
+                scaledStartPosition.x - relativeBarPadding.x * screenWidth,
+                scaledStartPosition.y - relativeBarPadding.y * screenHeight,
+                barWidth,
+                barHeight
+            );
+            GUI.DrawTexture(barRect, barTexture);
+        }
 
         for (int i = 0; i < totalTicks; i++)
         {
