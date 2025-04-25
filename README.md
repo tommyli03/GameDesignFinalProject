@@ -265,9 +265,15 @@ For each of the 7 sounds we created we've added them to a folder called "Sound T
 They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
 Background_Music:
 Default_Gun_Shooting: 
+
+https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
+
 Shotgun_Shooting: 
 Walking: 
 Dashing: 
+
+https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
+
 Enemy_Firing: 
 Hitting_Enemy: 
 These are the assets used for the sound:
@@ -290,7 +296,9 @@ We were able to get tree and grass animations correctly.
 Tree animation: 
 
 Grass animation: 
+
 https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
+
 These are the assets used for the animation:
 1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
@@ -317,15 +325,6 @@ Integrated grappling hook asset to expand player movement options.
 Populated islands with additional enemies to increase challenge and engagement.
 Enhanced enemy AI behavior for smarter, more dynamic encounters.
 Introduced diverse enemy archetypes, adding variety to combat scenarios.
-
-
-
-https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
-
-
-
-https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
-
 
 
 
