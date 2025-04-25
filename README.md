@@ -261,8 +261,15 @@ Our work for this deliverable consists of these 3 main components:
 - Animation
 
 Sound:
-For each of the 7 sounds we created, there was a bit of trouble adding them into the readme, so we've added them to a folder called "Sound Tests". Each one is a short, 5 to 15 second video displaying the sound.
+For each of the 7 sounds we created we've added them to a folder called "Sound Tests". Each one is a short, 5 to 15 second video displaying the sound.
 They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
+Background_Music:
+Default_Gun_Shooting: 
+Shotgun_Shooting: 
+Walking: 
+Dashing: 
+Enemy_Firing: 
+Hitting_Enemy: 
 These are the assets used for the sound:
 1. Default Gun and Shotgun Shooting: https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
 2. Walking: https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879
@@ -272,16 +279,16 @@ These are the assets used for the sound:
 
 UI:
 We focused on three parts of the UI for this iteration- the Health Bar, the Stamina Bar, and the Gun Changing.
-Unfortunately, we were unable to embed the videos into this readme, so all the demonstrations are in a folder called "UI Tests". Each one is a short video that demonstrates the functionality of the intended UI.
-They are labeled appropriately as: "Health_Bar", "Stamina_Bar", and "Gun_Changing".
-
-
-
+Health_Bar: 
+Stamina_Bar: 
+Gun_Changing:
 These are the assets used for the UI:
 1. https://assetstore.unity.com/search#q=GUI&nf-ec_price_filter=0...0
 
 Animation:
-We were able to get tree and grass animations correctly. Once again, these are placed in the folder "Animation Tests" and are labeled "Tree_Swaying" and "Grass_Swaying", respectively.
+We were able to get tree and grass animations correctly.
+Tree animation: 
+Grass animation: https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
 These are the assets used for the animation:
 1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
@@ -298,7 +305,6 @@ Background/Terrain:
 
 Gameplay:
 
-https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
 
 Goals/Rewards:
 We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health.
@@ -310,7 +316,8 @@ Populated islands with additional enemies to increase challenge and engagement.
 Enhanced enemy AI behavior for smarter, more dynamic encounters.
 Introduced diverse enemy archetypes, adding variety to combat scenarios.
 
-
+https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
+https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
 
 # Instructions for Testing the Project
 
