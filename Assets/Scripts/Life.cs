@@ -21,6 +21,7 @@ public class Life : MonoBehaviour
 
     private Vector2 healthBarSize = new Vector2(0.75f, 0.1f); // World units
     private Vector3 healthBarOffset = new Vector3(0, 2.5f, 0); // Above the enemy
+    private float healthBarVisibleRange = 30f; // Within this range, the health bar will be visible
 
     void Start()
     {
@@ -75,7 +76,11 @@ public class Life : MonoBehaviour
     // Draw health bar only for enemies
     private void OnGUI()
     {
-        if (isPlayer) return; // No health bar for players
+        if (isPlayer) return; // No health bar for player
+
+        float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
+
+        if (distance > healthBarVisibleRange) return; // Don't draw healthbars if too far
 
         Vector3 worldPosition = transform.position + healthBarOffset;
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
