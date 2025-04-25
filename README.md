@@ -264,18 +264,33 @@ Sound:
 For each of the 7 sounds we created we've added them to a folder called "Sound Tests". Each one is a short, 5 to 15 second video displaying the sound.
 They are labeled appropriately as: "Background_Music", "Default_Gun_Shooting", "Shotgun_Shooting", "Walking", "Dashing", "Enemy_Firing", and "Hitting_Enemy".
 Background_Music:
+
+
+
 Default_Gun_Shooting: 
 
 https://github.com/user-attachments/assets/f079f6d2-2eac-4680-8343-ebf5697ee8ad
 
 Shotgun_Shooting: 
+
+
+
 Walking: 
+
+
+
 Dashing: 
 
 https://github.com/user-attachments/assets/ed38f21b-c26d-4783-b4c5-c8edcd6c6593
 
 Enemy_Firing: 
+
+
+
 Hitting_Enemy: 
+
+
+
 These are the assets used for the sound:
 1. Default Gun and Shotgun Shooting: https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
 2. Walking: https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879
@@ -286,14 +301,25 @@ These are the assets used for the sound:
 UI:
 We focused on three parts of the UI for this iteration- the Health Bar, the Stamina Bar, and the Gun Changing.
 Health_Bar: 
+
+[▶️ Watch Health Bar Demo](UI%20Tests/Health_Bar.mov)
+
 Stamina_Bar: 
+
+[▶️ Watch Stamina Bar Demo](UI%20Tests/Stamina_Bar.mov)
+
 Gun_Changing:
+
+[▶️ Watch Gun Changing Demo](UI%20Tests/Gun_Changing.mov)
+
 These are the assets used for the UI:
 1. https://assetstore.unity.com/search#q=GUI&nf-ec_price_filter=0...0
 
 Animation:
 We were able to get tree and grass animations correctly.
 Tree animation: 
+
+
 
 Grass animation: 
 
