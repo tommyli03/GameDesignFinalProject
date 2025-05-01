@@ -11,6 +11,8 @@ public class Swap_Weapons : MonoBehaviour
 {
     public GameObject[] weapons;
     public int currentWeaponIndex = 0;
+    public bool sniperUnlocked = false;
+
 
     void Start()
     {
@@ -19,7 +21,22 @@ public class Swap_Weapons : MonoBehaviour
         {
             weapons[i].SetActive(i == 0);
         }
+        int sniperIndex = FindSniperIndex();
+        if (sniperIndex != -1)
+        {
+            weapons[sniperIndex].SetActive(false);
+        }
         currentWeaponIndex = 0;
+    }
+
+    public int FindSniperIndex()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].name == "Sniper")
+                return i;
+        }
+        return -1;
     }
 
     void Update()
@@ -48,7 +65,18 @@ public class Swap_Weapons : MonoBehaviour
     // Switches weapon based on scroll direction (+1 or -1), with wraparound logic
     void SwitchWeaponByOffset(int offset)
     {
-        currentWeaponIndex = (currentWeaponIndex + offset + weapons.Length) % weapons.Length;
+        int attempts = 0;
+        int nextIndex = currentWeaponIndex;
+
+        do
+        {
+            nextIndex = (nextIndex + offset + weapons.Length) % weapons.Length;
+            attempts++;
+        }
+        while (attempts < weapons.Length &&
+              (!sniperUnlocked && weapons[nextIndex].name == "Sniper" ));
+
+        currentWeaponIndex = nextIndex;
         UpdateWeapon();
     }
 
@@ -56,6 +84,9 @@ public class Swap_Weapons : MonoBehaviour
     void SwitchWeaponTo(int index)
     {
         if (index < 0 || index >= weapons.Length || index == currentWeaponIndex)
+            return;
+
+        if (!sniperUnlocked && weapons[index].name == "Sniper")
             return;
 
         currentWeaponIndex = index;

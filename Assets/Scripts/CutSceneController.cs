@@ -27,7 +27,7 @@ public class CutSceneController : MonoBehaviour
     private Grappling grapplingScript;
     private Swap_Weapons swapWeapons;
     private Movement movementScript;
-
+    private bool cutsceneEnded = false;
 
 
     void Start()
@@ -44,7 +44,7 @@ public class CutSceneController : MonoBehaviour
         // Cache all child weapons under FirstPersonCamera
         foreach (Transform child in firstPersonCamera.transform)
         {
-            if (child.name == "Default" || child.name == "Shotgun" || child.name == "Sniper" || child.name.Contains("Plasma"))
+            if (child.name == "Default" || child.name == "Shotgun" || child.name == "Sniper" || child.name.Contains("Plasma") || child.name == "Ray")
             {
                 weaponObjects.Add(child.gameObject);
                 child.gameObject.SetActive(false); // Disable weapon
@@ -83,8 +83,21 @@ public class CutSceneController : MonoBehaviour
         Invoke(nameof(EndCutscene), cutsceneDuration);
     }
 
+    void Update()
+    {
+        // Check for Enter key to skip cutscene early
+        if (!cutsceneEnded && Input.GetKeyDown(KeyCode.Return))
+        {
+            CancelInvoke(nameof(EndCutscene));
+            EndCutscene();
+        }
+    }
+
     void EndCutscene()
     {
+        if (cutsceneEnded) return; 
+        cutsceneEnded = true;
+
         if (dollyCart != null) dollyCart.m_Speed = 0f;
         if (vcamCutscene != null) vcamCutscene.SetActive(false);
         if (grapplingScript != null) grapplingScript.enabled = true;
@@ -104,7 +117,7 @@ public class CutSceneController : MonoBehaviour
             if (weapon != null)
             {
                 // Only re-enable the Default weapon
-                if (weapon.name == "Default" || weapon.name.Contains("Plasma"))
+                if (weapon.name == "Default" || weapon.name.Contains("Plasma") || weapon.name == "Ray")
                     weapon.SetActive(true);
             }
         }

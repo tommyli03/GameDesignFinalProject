@@ -136,7 +136,7 @@ public class EnemyFSM : MonoBehaviour
         distWalk = distanceWalk.magnitude;
         if (distanceWalk.magnitude < 2f)
         {
-            Debug.LogError("Setting false!");
+            // Debug.LogError("Setting false!");
             //walkPointSet = false;
             Invoke(nameof(SearchWalkPoint), burstCooldown);
         }

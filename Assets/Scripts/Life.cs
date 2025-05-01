@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /**
+ * Members: Eric, Lucas, Thomas
  * Summary: Manages the health (life) of an entity and triggers death behavior.
  * Works for both player and non-player characters. Supports UnityEvents on death,
  * optional sound playback on damage, and custom player death logic via GameManager.
@@ -68,6 +69,28 @@ public class Life : MonoBehaviour
         }
         else
         {
+            GameObject thisEnemy = this.gameObject;
+
+            // Check if this is a SniperDrop enemy
+            if (thisEnemy.CompareTag("Enemy") &&
+                thisEnemy.layer == LayerMask.NameToLayer("SniperDrop"))
+            {
+                GameObject player = GameObject.FindWithTag("Player");
+                if (player != null)
+                {
+                    Swap_Weapons swap = player.GetComponent<Swap_Weapons>();
+                    if (swap != null)
+                    {
+                        swap.sniperUnlocked = true;
+
+                        int sniperIndex = swap.FindSniperIndex();
+                        if (sniperIndex != -1)
+                            swap.weapons[sniperIndex].SetActive(true);
+
+                        UIManager.Instance?.ShowMessage("Nice job! You found the sniper gun. You can now swap to it.");
+                    }
+                }
+            }
             TryDropHealthPack();
             GameManager.Instance.EnemyDied();
             Destroy(gameObject);
