@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8254891333303301210}
   - component: {fileID: 8222655170643054932}
   - component: {fileID: 1414196137617344592}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_plums_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7929462325123785727}
   - component: {fileID: 2905107983372784782}
   - component: {fileID: 2834898563361763183}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_plums
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3661800321207667961}
   - component: {fileID: 9204582415525613151}
   - component: {fileID: 1987643193280244065}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_plums_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 6965208583826785942}
   - component: {fileID: 4352938707021388631}
   - component: {fileID: 6140726643089354878}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_plums_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

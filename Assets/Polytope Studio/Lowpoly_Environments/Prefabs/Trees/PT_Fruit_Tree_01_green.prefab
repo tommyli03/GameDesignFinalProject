@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1604534389263972203}
   - component: {fileID: 2450240378288737524}
   - component: {fileID: 1094804630965145243}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_green_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8305029876632308500}
   - component: {fileID: 6974490863388874546}
   - component: {fileID: 2558605503083844748}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_green_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4696216175943693753}
   - component: {fileID: 537705250742567624}
   - component: {fileID: 484267868434092574}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 2486815125958864585}
   - component: {fileID: 6631951447468464209}
   - component: {fileID: 1613519660729417021}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_green_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
