@@ -15,7 +15,7 @@ public class CameraZoom : MonoBehaviour
     public float zoomDuration = 0.6f; // Duration of the zoom
     public float fovChange = 25f;
     public float distort = 10f;
-    private float originalFOV;
+    public float originalFOV = 70f;
     public Camera cam;
     private float endTime;
     private float distortEnd;
@@ -27,7 +27,6 @@ public class CameraZoom : MonoBehaviour
         move = GetComponent<Movement>();
         //cam = GetComponent<Camera>();
         zoomDuration = move.dashDuration * .8f;
-        originalFOV = cam.fieldOfView;
         zoomFOV = originalFOV + fovChange;
         endTime = Time.time - 1f;
 

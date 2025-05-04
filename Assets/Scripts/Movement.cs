@@ -32,7 +32,23 @@ public class Movement : MonoBehaviour
     private float targetVolumeWeight = 0f;
     public AudioSource footstepAudio;
     private Vector3 lastPosition;
-    public AudioSource dashAudioSource;          
+    public AudioSource dashAudioSource;           
+
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+
+    public float groundDrag;
+    public float slowdown = .8f;
+
+    public float airSpeedMultiplier;
+
+    public float aimMult;
+
+    public SniperShooting shootSlow;
+
+    public float currentSpeed = 1f;
 
 
     void Start()
@@ -64,8 +80,19 @@ public class Movement : MonoBehaviour
         firstPersonCamera.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
 
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 13f, rb.velocity.z);
+            jumps--;
+        }
+
         if (activeGrapple)
             return;
+
+
+
+
 
         // Movement
         float moveX = Input.GetAxis("Horizontal"); 
@@ -73,36 +100,45 @@ public class Movement : MonoBehaviour
 
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
         moveDirection.y = 0f; 
+        
+        
+        //rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+
+        if (IsGrounded())
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 5f, ForceMode.Force);
+            rb.drag = groundDrag;
+        }
+        else
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 5f * airSpeedMultiplier, ForceMode.Force);
+            rb.drag = 0f;
+        }
 
 
-        rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+
+
+
         if (dashTimer > 0)
             dashTimer -= dt;
 
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, 15f, rb.velocity.z);
-            jumps--;
-        }
+        
 
         // Dashing
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && stamina == 1 && stamina != 2 && stamina != 3)
         {
-            Vector3 dashDirection = transform.forward.normalized;
-
-            rb.velocity = Vector3.zero;
 
             if (cameraZoom != null)
             {
                 cameraZoom.Zoom(cameraZoom.zoomDuration, 12f);
             }
-            StartCoroutine(Dash());
-            //rb.AddForce(dashDirection * 1000f, ForceMode.VelocityChange);
+            StartCoroutine(Dash(moveDirection));
 
             stamina = 2;
             dashTimer = dashDuration; // Start dash duration
         }
+        else
+            SpeedControl();
 
         // Handle stamina-based dash/cooldown timing
         if (stamina == 2) // Dash is happening
@@ -131,7 +167,7 @@ public class Movement : MonoBehaviour
 
         RaycastHit hit;
         float rayLength = 1.1f; // Adjust based on your character's size
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, rayLength))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, rayLength, whatIsGround))
             jumps = jumpmax;
         
         if (freeze)
@@ -167,7 +203,7 @@ public class Movement : MonoBehaviour
     }
 
     // Dash Coroutine
-    System.Collections.IEnumerator Dash()
+    System.Collections.IEnumerator Dash(Vector3 direction)
     {
         float startTime = Time.time;
         targetVolumeWeight = 1f;
@@ -178,18 +214,25 @@ public class Movement : MonoBehaviour
         }
 
         // Get the dash direction based on the character's forward direction
-        Vector3 dashDirection = transform.forward;
+        Vector3 dashDirection = direction;
+
+        if (direction.magnitude < .1)
+            dashDirection = transform.forward.normalized;
+        
 
         while (Time.time < startTime + dashDuration)
         {
-            // Calculate the dash progress (0 to 1)
-            float dashProgress = (Time.time - startTime) / dashDuration;
+            // // Calculate the dash progress (0 to 1)
+            // float dashProgress = (Time.time - startTime) / dashDuration;
 
-            // Apply a smooth force (e.g., using a curve or easing function)
-            float dashForce = Mathf.Lerp(dashSpeed, 0f, dashProgress);
-            rb.velocity = dashDirection * dashForce;
+            // // Apply a smooth force (e.g., using a curve or easing function)
+            // float dashForce = Mathf.Lerp(dashSpeed, 0f, dashProgress);
+            // rb.velocity = dashDirection * dashForce;
+            // yield return null; 
 
+            rb.AddForce(dashDirection * dashSpeed * Time.deltaTime, ForceMode.VelocityChange);
             yield return null; 
+
         }
 
         targetVolumeWeight = 0f;
@@ -261,6 +304,27 @@ public class Movement : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 horVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+
+        float excess = horVel.magnitude / moveSpeed;
+        if (excess > 1)
+        {
+            float slowFac = 1 + (excess-1)*slowdown;
+            Vector3 limited = horVel.normalized * moveSpeed * slowFac; //auxillary lerp function
+
+            rb.velocity = new Vector3(limited.x, rb.velocity.y, limited.z);
+        }
+
+        float targetSpeed = 1f; 
+        if (shootSlow.aimTime > 0f)
+            targetSpeed = .1f;
+
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, 8f * Time.deltaTime);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, rb.velocity.magnitude * currentSpeed);
     }
     
 }

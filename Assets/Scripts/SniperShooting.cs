@@ -9,7 +9,7 @@ using UnityEngine;
  * Shoots a ray to determine the bullet's target, applies spread in both X/Y axes,
  * and instantiates a physical projectile.
  */
-public class Shooting : MonoBehaviour
+public class SniperShooting : MonoBehaviour
 {
     public ParticleSystem muzzleFlash;
     public Camera playerCamera;
@@ -19,7 +19,6 @@ public class Shooting : MonoBehaviour
     public float fireRate;
     private float lastShootTime;
     public float weaponDamage;
-    public float spreadAngle;
     public float recoil;
     public Camera cam;
     public float rAngle = 0f; 
@@ -30,22 +29,20 @@ public class Shooting : MonoBehaviour
 
 
     [Header("Aiming Settings")]
-    [SerializeField] public float adsFOV = 40f; // Zoomed-in FOV
+    [SerializeField] public float adsFOV = 20f; // Zoomed-in FOV
     [SerializeField] private float normalFOV = 80f; // Default FOV
-    [SerializeField] private float adsTransitionSpeed = 10f;
+    [SerializeField] private float adsTransitionSpeed = 7f;
     [SerializeField] public Transform adsGunPosition; // Assign in Inspector (empty GameObject at desired ADS position)
     [SerializeField] public Transform normalGunPosition; // Assign (default gun position)
-    [SerializeField] public float adsSpreadMultiplier = 0.5f; // Reduce spread when aiming
     [SerializeField] public float adsRecoilMultiplier = 0.7f; // Reduce recoil when aiming
 
 
-
+    private float currentRecoil = 1f;
     
 
     public bool isAiming = false;
-    private float currentSpread; // Tracks dynamic spread
 
-    private float currentRecoil;
+    public float aimTime = 0f;
 
 
     void Start()
@@ -71,6 +68,8 @@ public class Shooting : MonoBehaviour
                 rAngle -= .5f;
             rAngle *= .9f;
         }
+        else 
+            rAngle = 0f;
 
     }
 
@@ -101,17 +100,20 @@ public class Shooting : MonoBehaviour
             isAiming ? adsGunPosition.position : normalGunPosition.position,
             adsTransitionSpeed * Time.deltaTime
         );
+
+        if (aimTime > 0f)
+            aimTime -= Time.deltaTime;
     }
 
     void OnAimStart()
     {
         currentRecoil = adsRecoilMultiplier;
-        currentSpread = adsSpreadMultiplier;
+        aimTime = 1.5f;
     }
     void OnAimEnd()
     {
         currentRecoil = 1f;
-        currentSpread = 1f;
+        aimTime = 0f;
     }
 
     // Fires one bullet with spread and visual/audio feedback
@@ -132,13 +134,9 @@ public class Shooting : MonoBehaviour
 
         Vector3 shootDirection = (targetPoint - ShootPoint.position).normalized;
 
-        float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
-        float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
         // Rotate direction by elevation (recoil)
         Quaternion elevation = Quaternion.AngleAxis(-rAngle * currentRecoil, ShootPoint.right);      
-        Quaternion horizontalRot = Quaternion.AngleAxis(currentAngle * currentSpread, ShootPoint.up);    // Left/right
-        Quaternion verticalRot = Quaternion.AngleAxis(currentYAngle * currentSpread, ShootPoint.right);     // Up/down
-        Vector3 spreadDirection = elevation * verticalRot * horizontalRot * ShootPoint.forward;
+        Vector3 spreadDirection = elevation * ShootPoint.forward;
 
         // Add velocity to bullet
         GameObject bullet = Instantiate(Bullet, ShootPoint.position, Quaternion.LookRotation(spreadDirection));
@@ -172,11 +170,3 @@ public class Shooting : MonoBehaviour
 
 }
 
-
-
-
-        // Add spread to direction
-        // float spreadX = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
-        // float spreadY = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
-        // Quaternion spreadRotation = Quaternion.Euler(spreadY + rAngle, spreadX, 0); //This line and the next sets the direction of one bullet as the camera angle, plus a slight random rotation.
-        // Vector3 finalDirection = spreadRotation * shootDirection;

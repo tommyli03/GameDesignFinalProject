@@ -21,6 +21,8 @@ public class ScatterShooting : MonoBehaviour
     public Movement move;
     public Camera cam;
     public AudioSource audioSource;
+
+    public ShotgunKB cone;
     
     void Update()
     {
@@ -37,40 +39,66 @@ public class ScatterShooting : MonoBehaviour
     // Fires all pellets, applies recoil, and initializes bullet properties
     void Shoot()
     {
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Vector3 targetPoint;
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            targetPoint = hit.point;
+        }
+        else
+        {
+            targetPoint = ray.GetPoint(100f);
+        }
+
+        Vector3 shootDirection = (targetPoint - ShootPoint.position).normalized;
+
+
         for (int i = 0; i < pelletCount; i++)
         {
-            GameObject bullet = Instantiate(Bullet, ShootPoint.position, ShootPoint.rotation);
             
+            float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+            float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
+
+
+
+            // Rotate direction by elevation (recoil)
+            Quaternion elevation = Quaternion.AngleAxis(0, ShootPoint.right);      
+            Quaternion horizontalRot = Quaternion.AngleAxis(currentAngle, ShootPoint.up);    // Left/right
+            Quaternion verticalRot = Quaternion.AngleAxis(currentYAngle, ShootPoint.right);     // Up/down
+            Vector3 spreadDirection = elevation * verticalRot * horizontalRot * ShootPoint.forward;
+
+            // Add velocity to bullet
+            GameObject bullet = Instantiate(Bullet, ShootPoint.position, Quaternion.LookRotation(spreadDirection));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                // Apply randomized horizontal and vertical spread within spreadAngle
-                float currentAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
-                float currentYAngle = Random.Range(-spreadAngle/2, spreadAngle/2);
-                //float angleStep = spreadAngle / (pelletCount - 1);
-                //float currentAngle = -spreadAngle / 2 + (angleStep * i);
-                
-                // Rotate forward direction by spread offset
-                Vector3 spreadDirection = Quaternion.Euler(currentYAngle, currentAngle, 0) * ShootPoint.forward;
-                rb.velocity = spreadDirection * bulletSpeed;
-            }
-            // Apply backward recoil to player based on camera direction
-            Vector3 kb = cam.transform.forward.normalized;
-            move.rb.AddForce(kb * -3f, ForceMode.Impulse);
+            rb.velocity = bullet.transform.forward * bulletSpeed;
             
-            // Set projectile damage using the ContactDamage script
+
+
+
+
             ContactDamage bulletScript = bullet.GetComponent<ContactDamage>();
             if (bulletScript != null)
             {
                 bulletScript.SetDamage(weaponDamage);
             }
 
-            if (audioSource != null) {
-                audioSource.Play();
-            }
-
-            // Automatically destroy bullet after a short time to limit range
             Destroy(bullet, 0.5f); 
         }
+        // Apply backward recoil to player based on camera direction
+        Vector3 kb = cam.transform.forward.normalized;
+        move.rb.AddForce(kb * -10f, ForceMode.Impulse);
+
+        cone.Fire();
+        
+        // Set projectile damage using the ContactDamage script
+        
+
+        if (audioSource != null) {
+            audioSource.Play();
+        }
+
+       
     }
+    
 }
