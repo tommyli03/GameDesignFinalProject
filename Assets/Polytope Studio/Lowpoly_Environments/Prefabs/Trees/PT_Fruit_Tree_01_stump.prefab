@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6802265350786472413}
   - component: {fileID: 8755691476161375511}
   - component: {fileID: -783672733620250552}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}

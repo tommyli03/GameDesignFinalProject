@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 794524481623672006}
   - component: {fileID: 3234218433630908428}
   - component: {fileID: -6966454040941627534}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PT_Fruit_Tree_01_logs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
