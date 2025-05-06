@@ -427,8 +427,73 @@ If we had more time, we would add:
 
 # Member Contributions
 
-Eric:
+<ins>Eric</ins>:
+All the UI things, including the health bar, dash bar, gun selection, and red outside upon low health
+Most of the shooting, including bullet mechanics from both the player and enemy
+Initial FSM AI to enemies
+Initial functionality of Sniper and Shotgun
+Initial NavMesh
+Initially different enemy archetypes
+Destructible Terrain (no longer used)
+All Player and Enemy Health
+Responsible for Game Development Document
 
-Lucas:
+<ins>Lucas</ins>:
 
-Tommy:
+Change movements to force based, generally huge overhaul of everything movement
+Directional dash, affected by gravity, faster
+Aiming to AR and sniper, changes recoil
+Aiming in with the sniper induces bullet time
+Shotgun knockback: added kb to enemies and fixed it for players
+Slightly tuned grappling distance/speed to make distances more feasible
+Made the grappling animation actionable (you can jump or dash out of it)
+Added glowing grappling points across the map (the ramiels)
+Made aesthetic objects move-through but grappleable
+NEW ISLAND YAYYYYY !!!! :3  
+Final Island has an actual boss and 20 enemies
+Terrain rework, affects home island and final island
+Tweaked enemies across all islands, added new enemy type (beamers)
+
+Had fun!
+
+
+<ins>Tommy</ins>:
+
+Project Part 1:
+Implemented player movement (WASD) and player jumping
+Made GameObjects of platforms and simple capsule of player
+Made a moving platform
+Attached camera to move with the player for FPS feel
+
+Project Part 2:
+Added a death screen so that the player can restart the game
+Created enemy robot model assets, applied mesh
+Added assault rifle, shotgun, and sniper assets
+Added character model (spartan armor)
+Created floating island design with terrain and rock assets
+
+Project Part 3:
+Added more background to the environment like brush and trees
+Employed more realism by developing lighting and shadows with lamps 
+Added muzzle effects for the assault rifle
+Bug fixing enemy animation
+Applied mesh for enemies so that bullets hit them
+
+Project Part 4:
+Added a sound when each gun is fired
+Added sound when an enemy is hit
+Added background music (fighting theme)
+Added a whoosh when dashing
+Added sound when walking
+Fixed weapon swapping to using number keys
+Pause game when in death screen
+Added more islands, and in each island added grass with animation, rocks, flowers, mushrooms, more trees and more lamps
+
+Project Part 4: Finishing Touches + Final Project:
+Added health packs drop from enemies
+Imported new animation for enemy robots from Mixamo
+Bug fixed restart screen
+Added new cutscene to the game to give an overall objective of the game to the player
+Added hot key to skip initial cutscene
+Moved sniper to be a hidden drop (assigned to an enemy on one of the islands)
+Moved islands around to be further and make grappling hook more central to the game
