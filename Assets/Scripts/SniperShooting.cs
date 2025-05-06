@@ -31,7 +31,7 @@ public class SniperShooting : MonoBehaviour
     [Header("Aiming Settings")]
     [SerializeField] public float adsFOV = 20f; // Zoomed-in FOV
     [SerializeField] private float normalFOV = 80f; // Default FOV
-    [SerializeField] private float adsTransitionSpeed = 7f;
+    [SerializeField] private float adsTransitionSpeed = 12f;
     [SerializeField] public Transform adsGunPosition; // Assign in Inspector (empty GameObject at desired ADS position)
     [SerializeField] public Transform normalGunPosition; // Assign (default gun position)
     [SerializeField] public float adsRecoilMultiplier = 0.7f; // Reduce recoil when aiming
@@ -108,7 +108,7 @@ public class SniperShooting : MonoBehaviour
     void OnAimStart()
     {
         currentRecoil = adsRecoilMultiplier;
-        aimTime = 1.5f;
+        aimTime = .9f;
     }
     void OnAimEnd()
     {
