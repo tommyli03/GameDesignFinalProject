@@ -17761,6 +17761,17 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 9209584032505922398, guid: e10790d69725042e4982c351cd83babf, type: 3}
   m_PrefabInstance: {fileID: 6746433348597624111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1032473306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8722646407487772221, guid: e10790d69725042e4982c351cd83babf, type: 3}
+  m_PrefabInstance: {fileID: 6746433348597624111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e0b90cbbce44fb6b4bbf20d720b837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1033444106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37956,6 +37967,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1032473300}
+    - target: {fileID: 2171983646823210139, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: life
+      value: 
+      objectReference: {fileID: 1032473306}
     - target: {fileID: 2171983646823210139, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: freeze
       value: 0
