@@ -5,13 +5,12 @@
 Thomas Li, Lucas Orquiza, Eric Wang
 
 # Game Summary
-Our game is a first-person action-adventure platformer where the player utilizes a grapple hook mechanic to traverse expansive and interconnected environments such as islands in a futuristic setting. We envision the main character of our game to be a cyborg, with one of its arms dedicated to deploying the grapple hook allowing the player to swing between floating islands, climb walls, and navigate through indoor and outdoor sections. The other arm can be launched out as a weapon to hit targets, solve puzzles that involve interacting with the environment, and fight enemies. The game will feature fluid and dynamic movement, with the player utilizing momentum-based swings the grapple hook offers. The game will follow our main character in which he has to traverse the world all while fighting evil cyborgs, parkour, and solving puzzles to move onto the next section. 
+Our game is a first-person action-adventure platformer where the player utilizes a grapple hook mechanic to traverse expansive and interconnected environments such as islands in a futuristic setting. We envision the main character of our game to be a cyborg, with one of its arms dedicated to holding the grapple hook gun allowing the player to swing between floating islands and navigate through outdoor sections. The other arm wields a variety of guns that can be swapped between, each with its own functionality and unique playstyle. The game will feature fluid and dynamic movement, with the player utilizing momentum-based swings the grapple hook offers. The game will follow our main character in which he has to traverse the world all while fighting evil cyborgs and parkour to move onto the next section. 
 
 # Genres
 - First-Person Platformer/Shooter
 - Action-Adventure
 - Science Fiction
-- Puzzle
 
 # Inspiration
 
@@ -344,7 +343,6 @@ Our work for this deliverable consists of these 3 main components:
 - Gameplay
 - Goals/Rewards
 
-
 Background/Terrain:
 We added muliple islands, then populated each island with additional enemies to increase the challenge and engagement. We've also made the game music a little louder.
 
@@ -359,10 +357,7 @@ Enemy Health Bar:
 
 
 Gameplay:
-We tweaked bullet and gun mechanics for smoother gameplay; this includes fixing the sniper for better accuracy and reliability. We also fixed the bug to the restart screen. Finally, we integrated a new grappling hook asset and fixed the UI issues.
-
-New Grappling Hook Asset:
-![Grappling_Gun](https://github.com/user-attachments/assets/973f8cbc-8bf2-4289-bfca-f2b0dea3c935)
+We tweaked bullet and gun mechanics for smoother gameplay; this includes fixing the sniper for better accuracy and reliability. We also fixed the bug to the restart screen. Finally, we removed the grappling hook asset and fixed the UI issues.
 
 
 Goals/Rewards:
@@ -373,6 +368,28 @@ Cutscene at the Beginning of the Game:
 
 Health Packs:
 [▶️ Watch Health Packs Demo](Animation%20Test/Health_Pack.mov)
+
+
+**Final Project Submission**
+Our work included touching up a few things. We added a new grappling hook asset.
+
+New Grappling Hook Asset:
+![Grappling_Gun](https://github.com/user-attachments/assets/973f8cbc-8bf2-4289-bfca-f2b0dea3c935)
+
+Furthermore, we added the Zoom effect. The Zoom effect works only on the assault rifle and the sniper. 
+For the Sniper, zooming slows down time by 90% in order to aim.
+For the Assault Rifle, zooming focuses the line of fire
+
+Zooming Video:
+
+We made it so that Sniper is not available at the beginning of the game and instead only unlockable after killing a specific enemy.
+
+Unlocking Sniper:
+
+Also, we added 'Ramiels', or checkpoints where the player can grapple onto. They serve as a way to traverse across to the other islands.
+<img width="258" alt="Ramiel" src="https://github.com/user-attachments/assets/a2709304-7e59-4593-b85b-07f27efe4f55" />
+
+
 
 
 # Instructions for Testing the Project
@@ -402,7 +419,7 @@ If we had more time, we would add:
 - More enemies
 - More islands with enemies
 - A Final Boss
-- More weapons, including a melee weapon
+- More weapons, including a melee weapon and a rocket launcher
 
 # Member Contributions
 
