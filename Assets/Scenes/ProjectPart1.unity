@@ -38141,8 +38141,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5110752450973668400, guid: e10790d69725042e4982c351cd83babf, type: 3}
+      propertyPath: adsRecoilMultiplier
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110752450973668400, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: adsSpreadMultiplier
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5712182598851139342, guid: e10790d69725042e4982c351cd83babf, type: 3}
       propertyPath: gun
