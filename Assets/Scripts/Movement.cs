@@ -48,8 +48,9 @@ public class Movement : MonoBehaviour
 
     public SniperShooting shootSlow;
 
-    public float currentSpeed = 1f;
+    private float currentSpeed = 1f;
 
+    public Life life;
 
     void Start()
     {
@@ -202,6 +203,12 @@ public class Movement : MonoBehaviour
 
     }
 
+    void LateUpdate()
+    {
+        if (life.isDead)    
+            Time.timeScale = 0f; 
+    }
+
     // Dash Coroutine
     System.Collections.IEnumerator Dash(Vector3 direction)
     {
@@ -333,6 +340,8 @@ public class Movement : MonoBehaviour
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, 8f * Time.deltaTime);
         Time.timeScale = currentSpeed;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        
     }
     
 }
