@@ -14,7 +14,7 @@ public class Life : MonoBehaviour
     public float amount;
     public UnityEvent onDeath;
     public bool isPlayer = false;
-    private bool isDead = false;
+    public bool isDead = false;
     public AudioSource hitSound;
     public GameObject healthPackPrefab;
     [Range(0f, 1f)] public float healthDropChance = 1.0f;
