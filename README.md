@@ -350,7 +350,7 @@ Enemies:
 We enhanced the enemy AI behavior for smarter, more dynamic encounters. We also added different kinds of enemy archetypes. We also imported new animations for enemy robots. We put health bars on top of enemies to showcase how low health they are.
 
 New Enemy Animation:
-
+[▶️ Watch New Enemy Animation Demo](Animation%20Test/New_Enemy_Animation.mov)
 
 Enemy Health Bar:
 [▶️ Watch Enemy Health Bar Demo](UI%20Tests/Enemy_Health_Bar.mov)
@@ -378,13 +378,15 @@ New Grappling Hook Asset:
 
 Furthermore, we added the Zoom effect. The Zoom effect works only on the assault rifle and the sniper. 
 For the Sniper, zooming slows down time by 90% in order to aim.
-For the Assault Rifle, zooming focuses the line of fire
+For the Assault Rifle, zooming focuses the line of fire.
 
 Zooming Video:
+[▶️ Watch Zooming Demo](UI%20Tests/Zoom.mov)
 
 We made it so that Sniper is not available at the beginning of the game and instead only unlockable after killing a specific enemy.
 
 Unlocking Sniper:
+[▶️ Watch Unlocking Sniper Demo](UI%20Tests/Unlock_Sniper.mov)
 
 Also, we added 'Ramiels', or checkpoints where the player can grapple onto. They serve as a way to traverse across to the other islands.
 <img width="258" alt="Ramiel" src="https://github.com/user-attachments/assets/a2709304-7e59-4593-b85b-07f27efe4f55" />
