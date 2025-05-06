@@ -251,7 +251,8 @@ public class Movement : MonoBehaviour
         {
             cameraZoom.Zoom(1.3f, 30f);
         }
-        jumps += 1;
+        
+        //jumps += 1;
     }
 
     private Vector3 targetV;
@@ -321,10 +322,27 @@ public class Movement : MonoBehaviour
 
         float targetSpeed = 1f; 
         if (shootSlow.aimTime > 0f)
-            targetSpeed = .1f;
+            targetSpeed = .15f;
+
+
+
+
+
+
 
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, 8f * Time.deltaTime);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, rb.velocity.magnitude * currentSpeed);
+        Time.timeScale = currentSpeed;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
     
 }
+
+
+
+//
+
+
+
+
+        // currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, 8f * Time.deltaTime);
+        // rb.velocity = Vector3.ClampMagnitude(rb.velocity, rb.velocity.magnitude * currentSpeed);
