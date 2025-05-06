@@ -408,7 +408,8 @@ Also, we added 'Ramiels', or checkpoints where the player can grapple onto. They
 
 # Demo
 
-[![Video Title](https://img.youtube.com/vi/bOJq_Z83Hoc/0.jpg)](https://www.youtube.com/watch?v=bOJq_Z83Hoc)
+Here is the link to the youtube video for the Demo:
+[![Video Title](https://img.youtube.com/vi/bOJq_Z83Hoc/1.jpg)](https://www.youtube.com/watch?v=bOJq_Z83Hoc)
 
 
 # Download
