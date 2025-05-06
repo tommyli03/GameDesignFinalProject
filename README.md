@@ -49,13 +49,13 @@ Mirror's Edge Catalyst is a first-person action-platformer that allows for fluid
 
 
 # Gameplay
-- Players can move with WASD keys, jump with the space key, and also dash by pressing a movement key twice in quick succession. Dashes can be done in any direction (such as double jumping when clicking space twice) but have a cooldown.
-- Players can swing between obstacles (islands, walls, etc.) with the grapple hook arm using right click on the mouse. Players can grapple to specified locations on the terrain denoted by some symbol.
-- Other than grappling, movement involves running, jumping, and wall-running
-- There will be two kinds of terrain: interactable (buttons to shoot that move certain parts, able to be walked on, or able to be grappled to) and non-interactable (background)
+- Players can move with WASD keys, jump with the space key, and also dash by pressing shift. Dashes can be done in any direction but has a cooldown shown by the blue bar underneath health.
+- Firing will be done by left-clicking, and aiming will be done by right-clicking
+- Players can jump to obstacles (islands, walls, etc.) with the grapple hook arm using E.
+- Other than grappling, movement involves running and jumping
 - Enemies will fire projectiles that the player needs to dodge in order to stay alive, but can also be shot themselves in order to die. There will be a variety of enemies, including flying ones, larger ones, etc.
-- There will be a simple narrative, about 3-4 levels, and a final boss at the end of the last level. We hope to allow players to unlock guns as they play, and when they die, they restart at the beginning of the level, allowing for levels to be checkpoints.
-- We're also planning on making the final boss very large and giving the player options to traverse the surface of the boss while attacking weakpoints, similar to the fight with the Titans from God of War 3.
+- There will be a simple narrative, about 3-4 levels at the end of the last level. We hope to allow players to unlock guns as they play, and when they die, they restart at the beginning.
+
 
 # Development Plan
 
@@ -121,15 +121,15 @@ Sound:
 
 UI:
 - ~~Health Bar (position to be determined)~~
-- Bullets Remaining
+- Bullets Remaining // Decided on using infinite bullets instead
 - ~~Red glare/vignette when on low health~~
-- Counter for Number of Enemies Alive
+- Counter for Number of Enemies Alive // Decided against tracking the number of enemies
 - ~~Dash Cooldown Bar~~
 
 Animation:
 - ~~Walking animation~~
 - ~~Enemy animation~~
-- Gun Firing animation (like rotation for recoil)
+- ~~Gun Firing animation (like rotation for recoil)~~
 
 **Project Part 4 Additions**
 - Finished up some of the Postprocessing
@@ -169,12 +169,9 @@ Goals/Rewards:
 
 Clean Up:
 Since most of the functionality is done, we just need to do the following clean-up:
-- Edge testing bugs
-- Invisible box around the island that disappears after killing all enemies
-- Win Screen upon killing all enemies
-- Improve enemy AI
-- Adding Rocket Launcher
-- Adding Melee Weapon
+- ~~Edge testing bugs~~
+- ~~Win Screen upon killing all enemies~~
+- ~~Improve enemy AI~~
 
 
 # Development
@@ -383,8 +380,34 @@ Health Packs:
 - General 2D Movement: WASD
 - Jump: Space Bar (can be spammed up to 5 times)
 - Dash: Shift (cooldown between dashes, but can also be spammed)
-- Grappling: Right-click
-- Swap between Guns: Mouse Scroll (up or down)
+- Grappling: E
+- Swap between Guns: Mouse Scroll (up or down) or clicking 1, 2, 3
 - Assault Rifle (Default Gun): Left-click (can be held down)
 - Shotgun: Left-click (cannot be held down, must manually re-click to fire again)
 - Sniper: Left-click (can be held down)
+- Zooming/Aiming: Right-click
+
+# Demo
+
+VIDEO GOES HERE
+
+# Download
+
+Here is the itch.io link to our game containing the WebGL version:
+https://tommyli03.itch.io/skyhook 
+
+# Future Work
+
+If we had more time, we would add:
+- More enemies
+- More islands with enemies
+- A Final Boss
+- More weapons, including a melee weapon
+
+# Member Contributions
+
+Eric:
+
+Lucas:
+
+Tommy:
