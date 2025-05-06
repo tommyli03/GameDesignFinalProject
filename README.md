@@ -339,7 +339,7 @@ https://github.com/user-attachments/assets/6a651406-7245-415d-ae2f-5714bcdbfec9
 These are the assets used for the animation:
 1. https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
-**Project Part 5:**
+**Project Part 4: Finishing Touches**
 
 Our work for this deliverable consists of these 3 main components:
 - Background/Terrain
@@ -352,13 +352,30 @@ Background/Terrain:
 We added muliple islands, then populated each island with additional enemies to increase the challenge and engagement. We've also made the game music a little louder.
 
 Enemies:
-We enhanced the enemy AI behavior for smarter, more dynamic encounters. We also added different kinds of enemy archetypes. We also imported new animations for enemy robots. We put health packs on top of enemies to showcase how low health they are.
+We enhanced the enemy AI behavior for smarter, more dynamic encounters. We also added different kinds of enemy archetypes. We also imported new animations for enemy robots. We put health bars on top of enemies to showcase how low health they are.
+
+New Enemy Animation:
+
+
+Enemy Health Bar:
+[▶️ Watch Enemy Health Bar Demo](UI%20Tests/Enemy_Health_Bar.mov)
+
 
 Gameplay:
 We tweaked bullet and gun mechanics for smoother gameplay; this includes fixing the sniper for better accuracy and reliability. We also fixed the bug to the restart screen. Finally, we integrated a new grappling hook asset and fixed the UI issues.
 
+New Grappling Hook Asset:
+![Grappling_Gun](https://github.com/user-attachments/assets/973f8cbc-8bf2-4289-bfca-f2b0dea3c935)
+
+
 Goals/Rewards:
-We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health. We added a health pack to enemy drops in order to reward players. Finally, we added a new cutscene at the beginning of the game to give an overall objective to the game.4 Additions
+We were able to make it so that killing enemies makes them drop health packs that you can pick up to increase your health. We added a health pack to enemy drops in order to reward players. Finally, we added a new cutscene at the beginning of the game to give an overall objective to the game.
+
+Cutscene at the Beginning of the Game:
+[▶️ Watch Cutscene Demo](Animation%20Test/Cutscene.mov)
+
+Health Packs:
+[▶️ Watch Health Packs Demo](Animation%20Test/Health_Pack.mov)
 
 
 # Instructions for Testing the Project
